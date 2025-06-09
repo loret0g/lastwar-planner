@@ -1,0 +1,27 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background: #f7f7f7;
+}
+
+.layout {
+  display: flex;
+  flex-direction: column;   /* <— ¡clave! */
+  height: 100vh;
+}
+
+.content {                  /* fila central */
+  display: flex;
+  flex: 1;                  /* ocupa todo lo que quede tras el header */
+}
+
+main {
+  flex: 1;
+  padding: 1.5rem;
+  overflow-y: auto;
+}

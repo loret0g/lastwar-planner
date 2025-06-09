@@ -1,0 +1,22 @@
+.tab {
+  padding: 8px 14px;
+  border: 1px solid #ccc;
+  background: #f5f5f5;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+/* Día actual (hoy) */
+.today {
+  background: #1976d2;   /* azul, elige el que prefieras */
+  color: #fff;
+}
+
+/* Día que el usuario tiene abierto */
+.active {
+  outline: 2px solid #ff9800;
+  font-weight: 600;
+}
+
+/* Si hoy además está seleccionado, se verán ambos estilos:
+   fondo azul + borde naranja */
