@@ -1,3 +1,6 @@
+/* =======================================
+   Global Reset y Base Styles
+   ======================================= */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -10,6 +13,9 @@ body {
   color: #212121;
 }
 
+/* =======================================
+   Layout Principal
+   ======================================= */
 .layout {
   display: flex;
   flex-direction: column;
@@ -19,6 +25,8 @@ body {
 .content {
   display: flex;
   flex: 1;
+  position: relative;  /* para overlay y dropdown */
+  overflow: hidden;
 }
 
 .main {
@@ -30,4 +38,69 @@ body {
 h1 {
   font-size: 1.5rem;
   margin-bottom: 0.75rem;
+}
+
+/* =======================================
+   Toggle de Secciones (móvil)
+   ======================================= */
+.toggle-sections-btn {
+  display: none;
+  width: 100%;
+  background: #ffa726;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* =======================================
+   Overlay para cerrar Sidebar
+   ======================================= */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 900; /* justo debajo del sidebar (1000) */
+}
+
+/* =======================================
+   Responsive (<= 768px)
+   ======================================= */
+@media (max-width: 768px) {
+  /* Apilar todo verticalmente */
+  .layout {
+    flex-direction: column;
+  }
+  .content {
+    flex-direction: column;
+  }
+
+  /* Mostrar botón toggle */
+  .toggle-sections-btn {
+    display: block;
+  }
+
+  /* Ajustes de main */
+  .main {
+    padding: 1rem;
+  }
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  /* Tabs horizontales */
+  .tabs {
+    overflow-x: auto;
+    white-space: nowrap;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+  }
+  .tabs .tab {
+    display: inline-block;
+  }
 }

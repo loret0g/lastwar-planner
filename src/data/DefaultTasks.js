@@ -119,7 +119,8 @@ export const DEFAULT_TASKS = {
     Domingo: {
       do: [
         'Guardar tareas de radar (i)',
-        'Poner tropas a recolectar (terminan después de las 04:00)'
+        'Poner tropas a recolectar (terminan después de las 04:00)',
+        'Tomar un Martini'
       ],
       dont: []
     }

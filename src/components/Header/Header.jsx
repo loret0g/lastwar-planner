@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react'
-import styles from './Header.module.css'
-import logo from '../../assets/alliance-logo.png'  // pon aquí tu logo
+import { useEffect, useState } from "react"
+import styles from "./Header.module.css"
+import logo from "../../assets/alliance-logo.png" // ajusta la ruta si hace falta
 
-export default function Header() {
+export default function Header({ onMenuClick }) {
   const [now, setNow] = useState(new Date())
 
   useEffect(() => {
@@ -10,11 +10,14 @@ export default function Header() {
     return () => clearInterval(id)
   }, [])
 
-  const dateStr = now.toLocaleDateString('es-ES', {
-    weekday: 'long', day: 'numeric', month: 'long'
+  const dateStr = now.toLocaleDateString("es-ES", {
+    weekday: "long",
+    day: "numeric",
+    month: "long",
   })
-  const timeStr = now.toLocaleTimeString('es-ES', {
-    hour: '2-digit', minute: '2-digit'
+  const timeStr = now.toLocaleTimeString("es-ES", {
+    hour: "2-digit",
+    minute: "2-digit",
   })
 
   return (
