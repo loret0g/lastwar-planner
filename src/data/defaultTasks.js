@@ -14,25 +14,6 @@ export const DAYS = [
 
 // Estructura: cada sección → cada día → { do: [..], dont: [..] }
 export const DEFAULT_TASKS = {
-  'Tareas Diarias': {
-    Lunes: {
-      do: [
-        'Hacer radar',
-        'Donar al centro de ayuda',
-        'Entrenar tropas'
-      ],
-      dont: []
-    },
-    Martes: {
-      do: [
-        'Guardar tareas radar (i)',
-        'Esperar carrera de armas de construcción para abrir regalos'
-      ],
-      dont: []
-    },
-    // …otros días…
-  },
-
   'Duelo de alianza': {
     Lunes: {
       do: [
@@ -54,8 +35,8 @@ export const DEFAULT_TASKS = {
     },
     Martes: {
       do: [
-        'Guardar tareas de radar (i)',
-        'Abrir regalos',
+        'Guardar tareas de radar',
+        'Abrir regalos de construcción',
         'Pide el puesto de Secretario de Desarrollo y construye al máximo',
         'Utiliza aceleradores de construcción',
         'Manda los 4 camiones LEGENDARIOS',
@@ -87,8 +68,8 @@ export const DEFAULT_TASKS = {
     },
     Jueves: {
       do: [
-        'Guardar tareas de radar (i)',
-        'Gastar toda la EXP y abrir cofres',
+        'Guardar tareas de radar',
+        'Gastar toda la EXP (abrir los cofres de EXP que se encuentran en el inventario)',
         'Usar tickets de reclutamiento de héroes',
         'Utilizar medallas en “Habilidades de héroe”',
         'Usar fragmentos de héroe (dorados a Kim, morados y azules)',
@@ -98,12 +79,15 @@ export const DEFAULT_TASKS = {
     },
     Viernes: {
       do: [
+        'Pide el puesto de Secretario de Seguridad y entrena/promueve tropas',
+        'Usar aceleradores de tropas',
         'Abrir tareas de radar cada 6 horas',
-        'Abrir regalos',
+        'Abrir regalos de construcción',
         'Pide el puesto de Secretario de Desarrollo y construye',
-        'Utiliza aceleradores de construcción (moderado si hay ventaja)',
-        'Entrenar/promover tropas y usar sus aceleradores',
-        'Investigación tecnológica (medallas y aceleradores si es necesario)'
+        'Utiliza aceleradores de construcción (moderado si hay ventaja)',     
+        'Investigación tecnológica (aceleradores si vamos perdiendo)',
+        'Poner escudo para que esté activo a las 04:00 y que dure hasta las 16:00 si compites en el duelo de servidor, sino hasta las 04:00 del sábado',
+        'No dejes las tropas recolectando por la noche, pueden ser atacadas',
       ],
       dont: []
     },
@@ -118,12 +102,31 @@ export const DEFAULT_TASKS = {
     },
     Domingo: {
       do: [
-        'Guardar tareas de radar (i)',
-        'Poner tropas a recolectar (terminan después de las 04:00)',
+        'Guardar tareas de radar',
+        'Poner tropas a recolectar (que terminen después de las 04:00 para puntuar el lunes)',
         'Tomar un Martini'
       ],
       dont: []
     }
+  },
+  
+  'Tareas Diarias': {
+    Lunes: {
+      do: [
+        'Hacer radar',
+        'Donar al centro de ayuda',
+        'Entrenar tropas'
+      ],
+      dont: []
+    },
+    Martes: {
+      do: [
+        'Guardar tareas radar',
+        'Esperar carrera de armas de construcción para abrir regalos'
+      ],
+      dont: []
+    },
+    // …otros días…
   },
 
   'Carrera de armas': {

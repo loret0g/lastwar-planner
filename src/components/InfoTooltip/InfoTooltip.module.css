@@ -1,0 +1,100 @@
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+/* El icono es clickable */
+.iconWrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+/* Pop-over estilo card */
+.popover {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  transform: translate(8px, -50%);
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  padding: 0.75rem 1rem;
+  z-index: 1500;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 200px;
+}
+
+/* Flecha apuntando al icono */
+.arrow {
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-top: 8px solid transparent;
+  border-bottom: 8px solid transparent;
+  border-right: 8px solid #ffffff;
+}
+
+/* Texto breve */
+.brief {
+  font-size: 0.875rem;
+  color: #333;
+}
+
+/* Botón “Más detalles” */
+.moreBtn {
+  align-self: flex-end;
+  background: #ffa726;
+  color: #fff;
+  border: none;
+  padding: 0.3rem 0.6rem;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.moreBtn:hover {
+  background: #fb8c00;
+}
+
+
+/* clip-path: polygon(50% 100%, 0 0, 100% 0); */
+
+/* Ajustes para móvil: popover centrado + flecha apuntando hacia abajo */
+@media (max-width: 768px) {
+  .popover {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90vw;
+    max-width: 400px;
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+    background: #fff;
+    z-index: 1500;
+    overflow: visible;  /* muy importante */
+  }
+
+  .arrow {
+    position: absolute;
+    top: 100%;            /* justo debajo del popover */
+    left: 50%;            /* centrada horizontalmente */
+    transform: translateX(-50%);
+    width: 20px;
+    height: 10px;
+    background: #fff;
+    /* triángulo con apex hacia abajo */
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+  }
+}

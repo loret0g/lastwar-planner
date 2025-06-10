@@ -61,3 +61,30 @@
   color: #b71c1c;
   font-weight: 500;
 }
+
+/* src/components/TaskList/TaskList.module.css */
+
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.item {
+  margin-bottom: 0.75rem;
+}
+
+/* Ajusta el icono de información */
+.infoIcon {
+  width: 1rem;
+  height: 1rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+/* Dentro del modal, la imagen explicativa */
+.detailImage {
+  width: 100%;
+  border-radius: 4px;
+  margin-top: 0.5rem;
+}
