@@ -1,27 +1,27 @@
-import { useState, useEffect, useRef } from "react"
-import { SECTIONS, DAYS, DEFAULT_TASKS } from "./data/defaultTasks"
-import Header from "./components/Header/Header"
-import Sidebar from "./components/Sidebar/Sidebar"
-import DayTabs from "./components/DayTabs/DayTabs"
-import TaskList from "./components/TaskList/TaskList"
-import "./index.css"
+import { useState, useEffect, useRef } from "react";
+import { SECTIONS, DAYS, DEFAULT_TASKS } from "./data/defaultTasks";
+import Header from "./components/Header/Header";
+import Sidebar from "./components/Sidebar/Sidebar";
+import DayTabs from "./components/DayTabs/DayTabs";
+import TaskList from "./components/TaskList/TaskList";
+import "./index.css";
 
 export default function App() {
-  const today = new Date().toLocaleDateString("es-ES", { weekday: "long" })
-  const onlyDuel = ["Duelo de alianza"]
-  const showAll = import.meta.env.VITE_SHOW_ALL === "true"
-  const sectionsList = showAll ? SECTIONS : onlyDuel
+  const today = new Date().toLocaleDateString("es-ES", { weekday: "long" });
+  const onlyDuel = ["Duelo de alianza"];
+  const showAll = import.meta.env.VITE_SHOW_ALL === "true";
+  const sectionsList = showAll ? SECTIONS : onlyDuel;
 
-  const [section, setSection] = useState(sectionsList[0])
+  const [section, setSection] = useState(sectionsList[0]);
   const [day, setDay] = useState(
-    DAYS.find(d => d.toLowerCase() === today.toLowerCase()) ?? "Lunes"
-  )
+    DAYS.find((d) => d.toLowerCase() === today.toLowerCase()) ?? "Lunes"
+  );
 
   // Control de sidebar abierto
-  const [isSidebarOpen, setSidebarOpen] = useState(false)
+  const [isSidebarOpen, setSidebarOpen] = useState(false);
 
   // Ref para detectar clicks fuera
-  const sidebarRef = useRef(null)
+  const sidebarRef = useRef(null);
   useEffect(() => {
     function handleClickOutside(event) {
       if (
@@ -29,14 +29,14 @@ export default function App() {
         sidebarRef.current &&
         !sidebarRef.current.contains(event.target)
       ) {
-        setSidebarOpen(false)
+        setSidebarOpen(false);
       }
     }
-    document.addEventListener("mousedown", handleClickOutside)
-    return () => document.removeEventListener("mousedown", handleClickOutside)
-  }, [isSidebarOpen])
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isSidebarOpen]);
 
-  const tasksByDay = DEFAULT_TASKS[section]?.[day] ?? { do: [], dont: [] }
+  const tasksByDay = DEFAULT_TASKS[section]?.[day] ?? { do: [], dont: [] };
 
   return (
     <div className="layout">
@@ -45,7 +45,7 @@ export default function App() {
       {/* Toggle para móvil */}
       <button
         className="toggle-sections-btn"
-        onClick={() => setSidebarOpen(o => !o)}
+        onClick={() => setSidebarOpen((o) => !o)}
       >
         {isSidebarOpen ? "▲ Secciones" : "▼ Secciones"}
       </button>
@@ -57,9 +57,9 @@ export default function App() {
             sections={sectionsList}
             current={section}
             isOpen={isSidebarOpen}
-            onSelect={sec => {
-              setSection(sec)
-              setSidebarOpen(false)
+            onSelect={(sec) => {
+              setSection(sec);
+              setSidebarOpen(false);
             }}
           />
         </div>
@@ -71,5 +71,5 @@ export default function App() {
         </main>
       </div>
     </div>
-  )
+  );
 }
