@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from "react"
-import { SECTIONS, DAYS, DEFAULT_TASKS } from "./data/DefaultTasks"
+import { SECTIONS, DAYS, DEFAULT_TASKS } from "./data/defaultTasks"
 import Header from "./components/Header/Header"
 import Sidebar from "./components/Sidebar/Sidebar"
 import DayTabs from "./components/DayTabs/DayTabs"
