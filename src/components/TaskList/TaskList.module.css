@@ -1,3 +1,5 @@
+/* src/components/TaskList/TaskList.module.css */
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -5,7 +7,7 @@
   margin-top: 1rem;
 }
 
-/* Acordeón base */
+/* === Acordeones === */
 .accordion {
   border: 1px solid #ddd;
   border-radius: 6px;
@@ -13,7 +15,6 @@
   background: #fff;
 }
 
-/* Título desplegable */
 .summary {
   padding: 0.75rem 1rem;
   font-size: 1.1rem;
@@ -44,7 +45,6 @@
   padding: 0.5rem 0;
 }
 
-/* Checkbox y texto alineados */
 .checkboxLabel {
   display: flex;
   align-items: center;
@@ -62,19 +62,7 @@
   font-weight: 500;
 }
 
-/* src/components/TaskList/TaskList.module.css */
-
-.list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-.item {
-  margin-bottom: 0.75rem;
-}
-
-/* Ajusta el icono de información */
+/* === InfoTooltip extras === */
 .infoIcon {
   width: 1rem;
   height: 1rem;
@@ -82,7 +70,6 @@
   cursor: pointer;
 }
 
-/* Dentro del modal, la imagen explicativa */
 .detailImage {
   width: 100%;
   border-radius: 4px;
