@@ -1,21 +1,23 @@
 .sidebar {
-  width: 220px;
+  width: 200px;
   background: #fff;
   padding: 1rem;
+  border-right: 1px solid #ddd;
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
-  border-right: 1px solid #ddd;
 }
 
-button {
-  padding: 8px 12px;
+.sidebar button {
+  padding: 0.6rem;
   border: 1px solid #aaa;
   background: #fafafa;
   cursor: pointer;
+  text-align: left;
 }
 
-.active {
+.sidebar .active {
   background: #ffa726;
   color: #fff;
+  border-color: #ff9800;
 }

@@ -7,21 +7,27 @@
 body {
   font-family: system-ui, sans-serif;
   background: #f7f7f7;
+  color: #212121;
 }
 
 .layout {
   display: flex;
-  flex-direction: column;   /* <— ¡clave! */
+  flex-direction: column;
   height: 100vh;
 }
 
-.content {                  /* fila central */
+.content {
   display: flex;
-  flex: 1;                  /* ocupa todo lo que quede tras el header */
+  flex: 1;
 }
 
-main {
+.main {
   flex: 1;
   padding: 1.5rem;
   overflow-y: auto;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-bottom: 0.75rem;
 }

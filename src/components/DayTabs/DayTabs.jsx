@@ -1,4 +1,3 @@
-// src/components/DayTabs/DayTabs.jsx
 import styles from './DayTabs.module.css';
 
 export default function DayTabs({ days, current, onSelect }) {
@@ -10,16 +9,15 @@ export default function DayTabs({ days, current, onSelect }) {
     <div className={styles.tabs}>
       {days.map(day => {
         const isActive = day === current;
-        const isToday  = day.toLowerCase() === todayName;
-
+        const isToday = day.toLowerCase() === todayName;
         return (
           <button
             key={day}
             onClick={() => onSelect(day)}
             className={[
-              styles.tab,                       // base
-              isToday  ? styles.today  : '',    // color especial
-              isActive ? styles.active : ''     // día seleccionado
+              styles.tab,
+              isToday ? styles.today : '',
+              isActive ? styles.active : ''
             ].join(' ')}
           >
             {day}
