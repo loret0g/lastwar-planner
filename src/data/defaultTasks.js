@@ -17,10 +17,10 @@ export const DEFAULT_TASKS = {
   'Duelo de alianza': {
     Lunes: {
       do: [
-        'Abrir tareas de radar cada 6 horas',
-        'Subir de nivel el dron',
-        'Gastar energía',
-        'Recolectar todo el día'
+        { text: 'Abrir tareas de radar cada 6 horas', tooltipKey: null },
+        { text: 'Subir de nivel el dron', tooltipKey: null },
+        { text: 'Gastar energía', tooltipKey: null },
+        { text: 'Recolectar todo el día', tooltipKey: null }
       ],
       dont: [
         'No abrir regalos/construcciones (dejamos para el martes)',
@@ -35,13 +35,13 @@ export const DEFAULT_TASKS = {
     },
     Martes: {
       do: [
-        'Guardar tareas de radar',
-        'Abrir regalos de construcción',
-        'Pide el puesto de Secretario de Desarrollo y construye al máximo',
-        'Utiliza aceleradores de construcción',
-        'Manda los 4 camiones LEGENDARIOS',
-        'Realiza las tareas legendarias: actualizar hasta que salga una dorada y hacerla',
-        'Reclutar y mejorar supervivientes'
+        { text: 'Guardar tareas de radar', tooltipKey: 'radar' },
+        { text: 'Abrir regalos de construcción', tooltipKey: null },
+        { text: 'Pide el puesto de Secretario de Desarrollo y construye al máximo', tooltipKey: null },
+        { text: 'Utiliza aceleradores de construcción', tooltipKey: null },
+        { text: 'Manda los 4 camiones LEGENDARIOS', tooltipKey: null },
+        { text: 'Realiza las tareas legendarias: actualizar hasta que salga una dorada y hacerla', tooltipKey: null },
+        { text: 'Reclutar y mejorar supervivientes', tooltipKey: null }
       ],
       dont: [
         'No abrir cofres de dron',
@@ -56,10 +56,10 @@ export const DEFAULT_TASKS = {
     },
     Miércoles: {
       do: [
-        'Abrir tareas de radar cada 6 horas',
-        'Investigar en “Duelo de alianzas”, “Camión interurbano”, “Fuerzas especiales”',
-        'Utilizar aceleradores de investigación',
-        'Abrir cofres de dron, juntar componentes y mejorarlo'
+        { text: 'Abrir tareas de radar cada 6 horas', tooltipKey: null },
+        { text: 'Investigar en “Duelo de alianzas”, “Camión interurbano”, “Fuerzas especiales”', tooltipKey: null },
+        { text: 'Utilizar aceleradores de investigación', tooltipKey: null },
+        { text: 'Abrir cofres de dron, juntar componentes y mejorarlo', tooltipKey: null }
       ],
       dont: [
         'No usar puntos ni chips de dron',
@@ -68,46 +68,65 @@ export const DEFAULT_TASKS = {
     },
     Jueves: {
       do: [
-        'Guardar tareas de radar',
-        'Gastar toda la EXP (abrir los cofres de EXP que se encuentran en el inventario)',
-        'Usar tickets de reclutamiento de héroes',
-        'Utilizar medallas en “Habilidades de héroe”',
-        'Usar fragmentos de héroe (dorados a Kim, morados y azules)',
-        'Saquea camiones con fragmentos dorados'
+        { text: 'Guardar tareas de radar', tooltipKey: 'radar' },
+        { text: 'Gastar toda la EXP (abrir los cofres de EXP que se encuentran en el inventario)', tooltipKey: null },
+        { text: 'Usar tickets de reclutamiento de héroes', tooltipKey: null },
+        { text: 'Utilizar medallas en “Habilidades de héroe”', tooltipKey: null },
+        { text: 'Usar fragmentos de héroe (dorados a Kim, morados y azules)', tooltipKey: null },
+        { text: 'Saquea camiones con fragmentos dorados', tooltipKey: null }
       ],
       dont: []
     },
     Viernes: {
       do: [
-        'Pide el puesto de Secretario de Seguridad y entrena/promueve tropas',
-        'Usar aceleradores de tropas',
-        'Abrir tareas de radar cada 6 horas',
-        'Abrir regalos de construcción',
-        'Pide el puesto de Secretario de Desarrollo y construye',
-        'Utiliza aceleradores de construcción (moderado si hay ventaja)',     
-        'Investigación tecnológica (aceleradores si vamos perdiendo)',
-        'Poner escudo para que esté activo a las 04:00 y que dure hasta las 16:00 si compites en el duelo de servidor, sino hasta las 04:00 del sábado',
-        'No dejes las tropas recolectando por la noche, pueden ser atacadas',
+        { text: 'Pide el puesto de Secretario de Seguridad y entrena/promueve tropas', tooltipKey: null },
+        { text: 'Usar aceleradores de tropas', tooltipKey: null },
+        { text: 'Abrir tareas de radar cada 6 horas', tooltipKey: null },
+        { text: 'Abrir regalos de construcción', tooltipKey: null },
+        { text: 'Pide el puesto de Secretario de Desarrollo y construye', tooltipKey: null },
+        { text: 'Utiliza aceleradores de construcción (moderado si hay ventaja)', tooltipKey: null },
+        { text: 'Investigación tecnológica (aceleradores si vamos perdiendo)', tooltipKey: null },
+        { text: 'Poner escudo para que esté activo a las 04:00 y que dure hasta las 16:00 si compites en el duelo de servidor, sino hasta las 04:00 del sábado', tooltipKey: null },
+        { text: 'No dejes las tropas recolectando por la noche, pueden ser atacadas', tooltipKey: null }
       ],
       dont: []
     },
     Sábado: {
       do: [
-        'Manda los 4 camiones LEGENDARIOS',
-        'Realiza las tareas legendarias',
-        'Usar aceleradores solo si es necesario',
-        'Puedes usar las tareas de radar aunque no puntúan'
+        { text: 'Manda los 4 camiones LEGENDARIOS', tooltipKey: null },
+        { text: 'Realiza las tareas legendarias', tooltipKey: null },
+        { text: 'Usar aceleradores solo si es necesario', tooltipKey: null },
+        { text: 'Puedes usar las tareas de radar aunque no puntúan', tooltipKey: null }
       ],
       dont: []
     },
     Domingo: {
       do: [
-        'Guardar tareas de radar',
-        'Poner tropas a recolectar (que terminen después de las 04:00 para puntuar el lunes)',
-        'Tomar un Martini'
+        { text: 'Guardar tareas de radar', tooltipKey: 'radar' },
+        { text: 'Poner tropas a recolectar (que terminen después de las 04:00 para puntuar el lunes)', tooltipKey: null },
+        { text: 'Tomar un Martini', tooltipKey: null }
       ],
       dont: []
     }
+  },
+  
+  'Tareas Diarias': {
+    Lunes: {
+      do: [
+        { text: 'Hacer radar', tooltipKey: null },
+        { text: 'Donar al centro de ayuda', tooltipKey: null },
+        { text: 'Entrenar tropas', tooltipKey: null }
+      ],
+      dont: []
+    },
+    Martes: {
+      do: [
+        { text: 'Guardar tareas radar', tooltipKey: null },
+        { text: 'Esperar carrera de armas de construcción para abrir regalos', tooltipKey: null }
+      ],
+      dont: []
+    },
+    // …otros días…
   },
   
   'Tareas Diarias': {

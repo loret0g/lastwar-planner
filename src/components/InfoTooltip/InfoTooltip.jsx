@@ -1,4 +1,3 @@
-// src/components/InfoTooltip/InfoTooltip.jsx
 import { useState, useEffect, useRef } from 'react'
 import Modal from '../Modal/Modal'
 import styles from './InfoTooltip.module.css'
