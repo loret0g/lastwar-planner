@@ -1,6 +1,5 @@
 import React from "react";
-// import modalStyles from "../components/Modal/Modal.module.css";
-import infoIcon from "../assets/info.png";
+import infoIcon from "../assets/help.png";
 import RadarTooltip from '../components/ToolTips/RadarToolTip'
 
 export const tooltipData = {
