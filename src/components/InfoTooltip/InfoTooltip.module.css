@@ -41,7 +41,7 @@
   object-fit: contain;
 }
 
-/* Pop-over estilo tarjeta */
+/* Pop-over estilo tarjeta (desktop) */
 .popover {
   position: absolute;
   top: 50%;
@@ -58,7 +58,7 @@
   gap: 0.5rem;
 }
 
-/* Flecha de relleno apuntando al icono */
+/* Flecha de relleno apuntando al icono (desktop) */
 .arrow {
   position: absolute;
   top: 50%;
@@ -95,8 +95,10 @@
 
 /* ===== MÓVIL: Pop-over centrado bajo el texto ===== */
 @media (max-width: 768px) {
+  /* Que el contenedor ocupe el ancho para centrar bien el popover */
   .wrapper {
-    position: relative;
+    display: flex;
+    width: 100%;
   }
 
   .popover {
@@ -104,25 +106,38 @@
     top: 100%;
     left: 50%;
     transform: translate(-50%, 12px);
-    width: 100%;
-    max-width: 360px;
+    width: min(92vw, 520px);   /* casi todo el ancho de pantalla */
+    max-width: 520px;
     padding: 1rem;
     background: #fff;
     border-radius: 8px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.2);
   }
 
+  /* Flecha hacia ARRIBA y centrada en el globo */
   .arrow {
     top: -8px;
     left: 50%;
     transform: translateX(-50%);
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-right: 8px solid #fff;
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #fff;
+    border-top: none;
   }
 
   .moreBtn {
     width: 100%;
     margin-top: 0.75rem;
   }
+}
+
+/* Asegura que las imágenes del popover no desborden */
+.popover img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 6px;
+  margin-top: 0.5rem;
 }

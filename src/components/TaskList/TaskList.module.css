@@ -11,67 +11,162 @@
 .accordion {
   border: 1px solid #ddd;
   border-radius: 6px;
-  overflow: hidden;
+  overflow: visible;
   background: #fff;
 }
-
-.summary {
-  padding: 0.75rem 1rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  background: #48a261;
-  color: #fff;
-  user-select: none;
+/* ===== Layout a 2 columnas (desktop) / 1 col (móvil) ===== */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 1rem;
+  align-items: start;
 }
 
-.summaryDont {
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Tarjetas base ===== */
+.cardHeader {
   padding: 0.75rem 1rem;
-  font-size: 1.1rem;
-  font-weight: 600;
-  cursor: pointer;
-  background: #b71c1c;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 10px 10px 0 0;
+}
+
+.cardBody {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+  padding: 0.75rem 1rem;
+}
+
+/* ===== “Qué hacer” ===== */
+.doHeader {
+  background: #48a261;
   color: #fff;
-  user-select: none;
+  border: 1px solid #3f8f56;
 }
 
 .list {
   list-style: none;
   margin: 0;
-  padding: 0.5rem 1rem;
+  padding: 0;
 }
 
-.item, .itemDont {
+.item {
   padding: 0.5rem 0;
+  border-bottom: 1px dashed #eee;
 }
+.item:last-child { border-bottom: 0; }
 
+/* checkbox alineado, lo usa TaskItem */
 .checkboxLabel {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
 }
-
 .checkbox {
   width: 1rem;
   height: 1rem;
   accent-color: #ffa726;
 }
 
-.itemDont {
-  color: #b71c1c;
-  font-weight: 500;
+/* ===== “Qué NO hacer” (card fija) ===== */
+.dontCol {
+  position: relative;
 }
 
-/* === InfoTooltip extras === */
+.dontCard {
+  position: sticky;
+  top: 0.75rem;              /* ajusta según tu header */
+  z-index: 2;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+}
+
+.dontHeader {
+  background: #b71c1c;
+  color: #fff;
+  border: 1px solid #9f1616;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* puntito de alerta */
+.warningDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffd166;
+  box-shadow: 0 0 0 3px rgba(255,209,102,0.25);
+}
+
+/* lista de NO hacer */
+.dontList {
+  list-style: none;
+  margin: 0 0 0.75rem 0;
+  padding: 0;
+}
+.dontItem {
+  color: #b71c1c;
+  font-weight: 600;
+  padding: 0.4rem 0;
+  border-bottom: 1px dashed #f2c7c7;
+}
+.dontItem:last-child { border-bottom: 0; }
+
+/* galería opcional con imágenes aclaratorias */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5rem;
+}
+.gallery img {
+  width: 100%;
+  border-radius: 8px;
+  display: block;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+
+@media (min-width: 1100px) {
+  .gallery { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* (si mantienes info tooltips, conserva estas clases ya existentes) */
 .infoIcon {
   width: 1rem;
   height: 1rem;
   margin-left: 0.5rem;
-  cursor: pointer;
+  vertical-align: -2px;
 }
-
 .detailImage {
   width: 100%;
   border-radius: 4px;
   margin-top: 0.5rem;
+}
+
+/* Sub-sección (línea sin checkbox) */
+.sectionLabel {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  margin: .9rem 0 .3rem;       /* un poco de aire */
+  padding: .4rem .6rem;
+  border-radius: 8px;
+  border: 1px solid #ffe08a;
+  background: #fff7da;         /* amarillo suave */
+  color: #6b5500;
+  font-weight: 700;
+}
+
+.sectionIcon {
+  font-size: 1rem;
+  line-height: 1;
+  transform: translateY(1px);
 }

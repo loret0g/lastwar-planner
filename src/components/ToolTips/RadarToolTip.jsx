@@ -51,17 +51,20 @@ export default function RadarTooltip() {
         <li>
           <h3>Identifica el último reinicio antes del inicio del evento</h3>
           <p>
-            Si el evento VS empieza el martes a las 4:00, y tu radar se reinicia
-            cada 6 horas (9:00, 15:00, 21:00, 3:00), entonces el último reinicio
+            Si el evento VS empieza el miércoles a las 4:00, y tu radar se reinicia
+            cada 6 horas (por ejemplo: 9:00, 15:00, 21:00, 3:00), entonces el último reinicio
             será el martes a las 3:00.
           </p>
         </li>
         <li>
           <h3>Calcula cuántas tareas puedes tener antes de ese reinicio</h3>
           <p>
-            Justo antes del reinicio (por ejemplo, martes a las 21:10), deja el
-            radar en: Límite – Generadas – 1. Si almacena hasta 35 y genera 11:
-            35 – 11 – 1 = 23 → 23/35.
+            Antes del reinicio (por ejemplo, martes a las 21:10), haz el siguiente cálculo para dejar el
+            radar con el máximo de tareas posible: 
+            <br></br><b>límite - generadas - 1</b>
+            <br>
+            </br> Si almacena hasta 35 y genera 11: <br></br>
+            35 - 11 - 1 = 23 → 23/35.
           </p>
         </li>
         <li>
@@ -76,7 +79,7 @@ export default function RadarTooltip() {
           <h3>Cuando empiece el VS, recoge las tareas</h3>
           <p>
             Hazlo antes del siguiente reinicio (en este caso, antes de las
-            9:00).
+            9:00) o perderás 10 tareas y el contador no se reiniciará hasta que cojas una.
           </p>
           <p className={modalStyles.radarNote}>
             🏆 Todas esas tareas cuentan para el VS y el radar seguirá activo.

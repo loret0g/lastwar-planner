@@ -1,31 +1,77 @@
-import React from 'react'
-import TaskItem from './TaskItem'
-import styles from './TaskList.module.css'
+import React from "react";
+import TaskItem from "./TaskItem";
+import styles from "./TaskList.module.css";
+
+import QuickActions from "../QuickActions/QuickActions";
 
 export default function TaskList({ tasks }) {
-  return (
-    <div className={styles.wrapper}>
-      <details open className={styles.accordion}>
-        <summary className={styles.summary}>Qué hacer</summary>
-        <ul className={styles.list}>
-          {tasks.do.map((tObj, i) => (
-            <li key={i} className={styles.item}>
-              <TaskItem text={tObj.text} tooltipKey={tObj.tooltipKey} />
-            </li>
-          ))}
-        </ul>
-      </details>
+  const doTasks = tasks.do ?? [];
+  const dontTasks = tasks.dont ?? [];
+  const dontImages = tasks.dontImages ?? []; // opcional: array de imágenes
 
-      {tasks.dont.length > 0 && (
-        <details className={styles.accordion}>
-          <summary className={styles.summaryDont}>Qué NO hacer</summary>
+  return (
+    <div className={styles.grid}>
+      {/* Columna izquierda: Qué hacer */}
+      <section className={styles.doCol} aria-labelledby="doTitle">
+        <header
+          className={styles.cardHeader + " " + styles.doHeader}
+          id="doTitle"
+        >
+          <span className={styles.chevron}>▾</span> Qué hacer
+        </header>
+        <div className={styles.cardBody}>
           <ul className={styles.list}>
-            {tasks.dont.map((t, i) => (
-              <li key={i} className={styles.itemDont}>{t}</li>
+            {doTasks.map((tObj, i) => (
+              <li key={i} className={styles.item}>
+                {/* tus checkboxes + InfoTooltip viven dentro de TaskItem */}
+                <TaskItem
+                  text={tObj.text}
+                  tooltipKey={tObj.tooltipKey}
+                  type={tObj.type}
+                />
+              </li>
             ))}
           </ul>
-        </details>
+
+          <QuickActions />
+        </div>
+      </section>
+
+      {/* Columna derecha: Qué NO hacer (fijo en desktop, apilado en móvil) */}
+      {dontTasks.length > 0 && (
+        <aside className={styles.dontCol} aria-labelledby="dontTitle">
+          <div className={styles.dontCard}>
+            <header
+              className={styles.cardHeader + " " + styles.dontHeader}
+              id="dontTitle"
+            >
+              <span className={styles.warningDot} aria-hidden />
+              Hoy NO se hace:
+            </header>
+
+            <div className={styles.cardBody}>
+              <ul className={styles.dontList}>
+                {dontTasks.map((t, i) => (
+                  <li key={i} className={styles.dontItem}>
+                    {t}
+                  </li>
+                ))}
+              </ul>
+
+              {dontImages.length > 0 && (
+                <div
+                  className={styles.gallery}
+                  aria-label="Ejemplos visuales de qué no hacer"
+                >
+                  {dontImages.map((src, idx) => (
+                    <img key={idx} src={src} alt="" />
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        </aside>
       )}
     </div>
-  )
+  );
 }

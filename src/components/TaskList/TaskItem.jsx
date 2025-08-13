@@ -4,7 +4,18 @@ import InfoTooltip from '../InfoTooltip/InfoTooltip'
 import { tooltipData } from '../../data/tooltipData'
 import styles from './TaskList.module.css'
 
-export default function TaskItem({ text, tooltipKey }) {
+export default function TaskItem({ text, tooltipKey, type = 'task' }) {
+  // Apartado / subtítulo dentro de la lista
+  if (type === 'section') {
+    return (
+      <div className={styles.sectionLabel} role="heading" aria-level={3}>
+        <span className={styles.sectionIcon} aria-hidden>⚠️</span>
+        {text}
+      </div>
+    )
+  }
+
+  // Tarea normal (con o sin tooltip)
   const config = tooltipKey && tooltipData[tooltipKey]
   if (config) {
     const { icon, brief, details } = config
@@ -17,6 +28,7 @@ export default function TaskItem({ text, tooltipKey }) {
       </InfoTooltip>
     )
   }
+
   return (
     <label className={styles.checkboxLabel}>
       <input type="checkbox" className={styles.checkbox} />
