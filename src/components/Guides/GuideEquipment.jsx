@@ -10,6 +10,8 @@ import attackHero from "../../assets/attack-hero.png";
 import defensetHero from "../../assets/defense-hero.png";
 import healingHero from "../../assets/healing-hero.png";
 
+import priorityEquipment from "../../assets/priority-equipment.png";
+
 const CARDS = [
   {
     key: "basics",
@@ -58,7 +60,7 @@ const CARDS = [
           <li>Cañón de riel</li>
           <li>Chip de datos</li>
         </ul>
-        <img src="/src/assets/attack-hero.png" alt="Heroe de ataque" />
+        <img src={attackHero} alt="Heroe de ataque" />
 
         <h3>Héroes de defensa</h3>
         <ul>
@@ -80,7 +82,7 @@ const CARDS = [
   {
     key: "optimize",
     title: "Mejorar el nivel del armamento en orden",
-    thumb: "/src/assets/priority-equipment.png",
+    thumb: priorityEquipment,
     body: (
       <>
         <ol className={styles.steps}>
