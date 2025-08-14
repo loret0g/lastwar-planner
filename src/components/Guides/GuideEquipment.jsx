@@ -1,29 +1,38 @@
 import { useState } from "react";
 import styles from "./Guides.module.css";
 
+import equipmentFront from "../../assets/equipment-factory.png";
+import equipmentFactory from "../../assets/equipment-factory2.png";
+import disassembleEquipment from "../../assets/disassemble-equipment.png";
+import fusionEquipment from "../../assets/fusion-equipment.png";
+
+import attackHero from "../../assets/attack-hero.png";
+import defensetHero from "../../assets/defense-hero.png";
+import healingHero from "../../assets/healing-hero.png";
+
 const CARDS = [
   {
     key: "basics",
     title: "Crear equipamiento legendario",
-    thumb: "/src/assets/front-equipment-factory.png",
+    thumb: equipmentFront,
     body: (
       <>
         <p>
           Ir a la fábrica de equipamiento para crear los diversos componentes (únicamente legendarios)
         </p>
-        <img src="/src/assets/equipment-factory.png" alt="Flow" />
+        <img src={equipmentFactory} alt="Flow" />
 
         <p>
           Desmantela todo el equipamiento que no sea legendario (dorado) para
           conseguir más material
         </p>
-        <img src="/src/assets/disassemble-equipment.png" alt="Flow" />
+        <img src={disassembleEquipment} alt="Flow" />
 
         <p>
           Fusiona los materiales uno por uno (empezando por la derecha) hasta
           conseguir 750 cerámicas dieléctricas
         </p>
-        <img src="/src/assets/fusion-equipment.png" alt="Flow" />
+        <img src={fusionEquipment} alt="Flow" />
 
         <p>
           Una vez que se tengan las cerámicas dieléctricas, construimos el
@@ -41,7 +50,7 @@ const CARDS = [
   {
     key: "farm",
     title: "Prioridad de equipamiento",
-    thumb: "/src/assets/attack-hero.png",
+    thumb: attackHero,
     body: (
       <>
         <h3>Héroes de ataque</h3>
@@ -56,14 +65,14 @@ const CARDS = [
           <li>Armadura</li>
           <li>Radar</li>
         </ul>
-        <img src="/src/assets/defense-hero.png" alt="Heroe de defensa" />
+        <img src={defensetHero} alt="Heroe de defensa" />
 
         <h3>Héroes de curación</h3>
         <ul>
           <li>Cañón de riel</li>
           <li>Chip de datos</li>
         </ul>
-        <img src="/src/assets/healing-hero.png" alt="Heroe de curación" />
+        <img src={healingHero} alt="Heroe de curación" />
       </>
     ),
   },
