@@ -70,7 +70,7 @@ export const DEFAULT_TASKS = {
         { text: 'Usar tickets de reclutamiento de héroes', tooltipKey: null },
         { text: 'Gastar toda la EXP de héroe (abrir los cofres de EXP que se encuentran en el inventario)', tooltipKey: null },
         { text: 'Usar fragmentos de héroe', tooltipKey: null },
-        { text: 'Utilizar medallas en “Habilidades de héroe”', tooltipKey: null },
+        { text: 'Utilizar medallas en “Habilidades de héroe”', tooltipKey: "skillMedals" },
       ],
       dont: [
         'No realizar tareas de radar, se guardan para mañana',
@@ -128,6 +128,7 @@ export const DEFAULT_TASKS = {
       do: [
         { text: 'Guardar tareas de radar', tooltipKey: 'radar' },
         { text: 'Poner tropas a recolectar (que terminen después del reinicio del servidor para puntuar el lunes)', tooltipKey: 'gather' },
+        { text: 'Ir de compras', tooltipKey: null },
         { text: 'Tomar un Martini', tooltipKey: null }
       ],
       dont: [

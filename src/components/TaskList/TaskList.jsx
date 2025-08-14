@@ -4,10 +4,10 @@ import styles from "./TaskList.module.css";
 
 import QuickActions from "../QuickActions/QuickActions";
 
-export default function TaskList({ tasks }) {
+export default function TaskList({ tasks, currentDay }) {
   const doTasks = tasks.do ?? [];
   const dontTasks = tasks.dont ?? [];
-  const dontImages = tasks.dontImages ?? []; // opcional: array de imágenes
+  const dontImages = tasks.dontImages ?? []; //! opcional: array de imágenes
 
   return (
     <div className={styles.grid}>
@@ -23,7 +23,6 @@ export default function TaskList({ tasks }) {
           <ul className={styles.list}>
             {doTasks.map((tObj, i) => (
               <li key={i} className={styles.item}>
-                {/* tus checkboxes + InfoTooltip viven dentro de TaskItem */}
                 <TaskItem
                   text={tObj.text}
                   tooltipKey={tObj.tooltipKey}
@@ -33,11 +32,11 @@ export default function TaskList({ tasks }) {
             ))}
           </ul>
 
-          <QuickActions />
+          <QuickActions currentDay={currentDay} />
         </div>
       </section>
 
-      {/* Columna derecha: Qué NO hacer (fijo en desktop, apilado en móvil) */}
+      {/* Columna derecha: Qué NO hacer */}
       {dontTasks.length > 0 && (
         <aside className={styles.dontCol} aria-labelledby="dontTitle">
           <div className={styles.dontCard}>

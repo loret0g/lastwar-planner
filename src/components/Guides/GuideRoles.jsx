@@ -1,13 +1,20 @@
 import { useState } from "react";
 import styles from "./Guides.module.css";
 
-// import {profileImg} from "src/assets/profile.png";
+// IMPORTA TODAS LAS IMÁGENES (así Vite las empaqueta bien)
+import rolesOverview from "../../assets/roles-overview.png";
+import rolesApply from "../../assets/roles-apply.png";
+import profileImg from "../../assets/profile.png";
+import serverImg from "../../assets/server.png";
+import rolesQueues from "../../assets/roles-queues.png";
+import buildingImg from "../../assets/building.png";
+import buildingHour from "../../assets/building-hour.png";
 
 const CARDS = [
   {
     key: "how-it-works",
     title: "Funcionamiento de los cargos",
-    thumb: "/src/assets/roles-overview.png",
+    thumb: rolesOverview,
     body: (
       <>
         <h3>Cargos y bonificaciones</h3>
@@ -32,7 +39,8 @@ const CARDS = [
           <li>
             <strong>Secretario del Interior</strong> — aumenta los recursos en las minas.
             <br />
-            Una vez que tienes el cargo, recolectas las minas. Comprueba en tus minas el tiempo máximo de producción y solicita el cargo antes de que se llenen
+            Una vez que tienes el cargo, recolectas las minas. Comprueba en tus
+            minas el tiempo máximo de producción y solicita el cargo antes de que se llenen.
           </li>
           <li>
             <strong>Secretario de Estrategia</strong> — aumenta la capacidad del hospital.
@@ -48,13 +56,11 @@ const CARDS = [
         <h3>Reglas clave</h3>
         <ul>
           <li>Los bonus son <strong>temporales</strong>, tienen una duración de 5 minutos si hay más gente en la cola.</li>
-          <li>Te asignan el cargo, haces tu acción (p. ej. iniciar edificios/investigaciones) y listo</li>
+          <li>Te asignan el cargo, haces tu acción (p. ej. iniciar edificios/investigaciones) y listo.</li>
           <li>Planifica tus aceleradores para usarlos mientras el cargo esté activo.</li>
         </ul>
 
-        <p className={styles.note}>
-          Consejo:
-        </p>
+        <p className={styles.note}>Consejo:</p>
       </>
     ),
   },
@@ -62,30 +68,31 @@ const CARDS = [
   {
     key: "how-to-request",
     title: "Cómo solicitar los cargos",
-    thumb: "/src/assets/roles-apply.png",
+    thumb: rolesApply,
     body: (
       <>
-        <ol>
+        <ol className={styles.steps}>
           <li>
-            Arriba a la izquierda, pulsa en la foto de tu perfil
+            Arriba a la izquierda, pulsa en la foto de tu perfil.
+            <img src={profileImg} alt="Acceso al perfil" loading="lazy" />
           </li>
-          <img src="src/assets/profile.png" alt="Perfil" />
-
           <li>
-            Pulsa en el servidor
+            Pulsa en el servidor.
+            <img src={serverImg} alt="Pantalla del servidor" loading="lazy" />
           </li>
-          <img src="src/assets/server.png" alt="Servidor" />
-
-          <li>Selecciona el cargo que te interesa</li>
-          <img src="src/assets/roles-overview.png" alt="Roles" />
-
-          <li>Puedes ver la cola de espera y en 'lista' verás si hay más gente que ha aplicado pero aún no ha sido aceptada</li>
-          <img src="src/assets/roles-queues.png" alt="Edificio" />
-
-          <li>Ves al edificio para confirmar tu hora. Selecciona 'hora local' para no liarte</li>
-          <img src="src/assets/building.png" alt="Edificio" />
-          <img src="src/assets/building-hour.png" alt="Edificio con hora señalada" />
-
+          <li>
+            Selecciona el cargo que te interesa.
+            <img src={rolesOverview} alt="Listado de cargos disponibles" loading="lazy" />
+          </li>
+          <li>
+            Puedes ver la cola de espera y en “lista” verás si hay más gente que ha aplicado pero aún no ha sido aceptada.
+            <img src={rolesQueues} alt="Colas de solicitud de cargos" loading="lazy" />
+          </li>
+          <li>
+            Ve al edificio para confirmar tu hora una vez que te hayan aceptado. Selecciona “hora local” para no liarte.
+            <img src={buildingImg} alt="Edificio de cargos" loading="lazy" className={styles.imgBuilding} />
+            <img src={buildingHour} alt="Selección de hora local" loading="lazy" />
+          </li>
         </ol>
 
         <h3>Buenas prácticas</h3>
@@ -131,6 +138,7 @@ export default function GuideRoles() {
         <button className={styles.backBtn} onClick={() => setSelected(null)}>
           ← Atrás
         </button>
+        <h2 className={styles.title}>{card.title}</h2>
       </div>
 
       <div className={styles.detailBody}>{card.body}</div>

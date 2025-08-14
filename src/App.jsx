@@ -67,7 +67,7 @@ export default function App() {
         <main className="main">
           <h1>{section}</h1>
           <DayTabs days={DAYS} current={day} onSelect={setDay} />
-          <TaskList tasks={tasksByDay} />
+          <TaskList tasks={tasksByDay} currentDay={day} />
         </main>
       </div>
     </div>
