@@ -7,6 +7,7 @@ import infoIcon from "../assets/help.png";
 import dronChest from '../assets/dron-chest.png'
 import gather from '../assets/resources.png'
 import droneDataImg from '../assets/drone.png'
+import skillMedalsImg from '../assets/skill-medals.png'
 
 export const tooltipData = {
   radar: {
@@ -51,11 +52,11 @@ export const tooltipData = {
       </>
   },
 
-  gather: {
+  skillMedals: {
     icon: <img src={infoIcon} alt="Info" />,
     brief:
       <>
-        <img src={gather} alt="Minas" />
+        <img src={skillMedalsImg} alt="Minas" />
       </>
   },
 

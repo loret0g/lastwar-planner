@@ -1,3 +1,7 @@
+/* ===============================
+   Guides: estructura común
+   =============================== */
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -7,7 +11,61 @@
 .title {
   font-size: 1.25rem;
   font-weight: 700;
+  margin-bottom: .25rem;
 }
+
+.detailHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: .5rem;
+}
+
+.backBtn {
+  border: 1px solid #e6e6e6;
+  background: #fff;
+  border-radius: 8px;
+  padding: 0.35rem 0.6rem;
+  cursor: pointer;
+}
+
+.detailBody {
+  display: grid;
+  gap: 0.75rem;
+  line-height: 1.6;
+  color: #333;
+}
+
+.detailBody h3 {
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+  font-size: 1.05rem;
+}
+
+.detailBody p {
+  margin: 0;
+}
+
+.detailBody img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-top: 0.5rem;
+}
+
+/* Nota / callout */
+.note {
+  padding: .75rem .9rem;
+  border-left: 4px solid #48a261;
+  background: #f2fbf6;
+  border-radius: 8px;
+  color: #245c39;
+  font-size: .95rem;
+}
+
+/* ===============================
+   Grid de tarjetas (vista inicial)
+   =============================== */
 
 .grid {
   display: grid;
@@ -41,35 +99,19 @@
   font-weight: 600;
 }
 
-.detailHeader {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-
-.backBtn {
-  border: 1px solid #e6e6e6;
-  background: #fff;
-  border-radius: 8px;
-  padding: 0.35rem 0.6rem;
-  cursor: pointer;
-}
-
-.detailBody img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  margin-top: 0.5rem;
-}
+/* ===============================
+   Listas con viñetas compactas
+   =============================== */
 
 .bullets {
   margin-left: 1rem;
   line-height: 1.6;
 }
 
-/**** GuideEquipment.jsx ****/
-/**** 3ª card, aumentar el nivel en orden ****/
-/* Lista de pasos */
+/* ===============================
+   Steps (GuideEquipment: Optimizar)
+   =============================== */
+
 .steps {
   list-style: none;
   margin: 0.75rem 0 0;
@@ -78,8 +120,6 @@
   flex-direction: column;
   gap: 0.6rem;
 }
-
-/* Tarjetas simples y limpias */
 .steps li {
   padding: 0.9rem 1rem;
   background: #fff;
@@ -89,12 +129,30 @@
   line-height: 1.55;
   font-size: 0.97rem;
 }
-
-/* Compacto en móvil */
+.steps li img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-top: .5rem;
+}
 @media (max-width: 560px) {
   .steps li {
     border-radius: 10px;
     padding: 0.85rem 0.9rem;
     font-size: 0.95rem;
   }
+}
+
+/* ===============================
+   Imágenes específicas (roles)
+   =============================== */
+
+.imgBuilding {
+  width: 200px !important;
+}
+
+/* Ajustes responsive generales */
+@media (max-width: 560px) {
+  .title { font-size: 1.2rem; }
 }
