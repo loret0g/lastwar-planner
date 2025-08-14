@@ -9,7 +9,7 @@ const CARDS = [
   {
     key: "tank-priority",
     title: "Héroes de tanque",
-    thumb: "/src/assets/tank-priority.png",
+    thumb: priorityTank,
     body: (
       <>
         <img src={priorityTank} alt="Héroes de tanque" />
@@ -20,7 +20,7 @@ const CARDS = [
   {
     key: "aircraft-priority",
     title: "Héroes de aeronaves",
-    thumb: "/src/assets/aircraft-priority.png",
+    thumb: priorityAircraft,
     body: (
       <>
         <img src={priorityAircraft} alt="Héroes de aeronaves" />
