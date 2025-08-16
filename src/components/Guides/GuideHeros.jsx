@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styles from "./Guides.module.css";
 
-import priorityTank from "../../assets/tank-priority.png";
-import priorityAircraft from "../../assets/aircraft-priority.png";
+import priorityTank from "../../assets/guides/heros/tank-priority.png";
+import priorityAircraft from "../../assets/guides/heros/aircraft-priority.png";
 
 
 const CARDS = [

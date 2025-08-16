@@ -2,13 +2,13 @@ import { useState } from "react";
 import styles from "./Guides.module.css";
 
 // IMPORTA TODAS LAS IMÁGENES (así Vite las empaqueta bien)
-import rolesOverview from "../../assets/roles-overview.png";
-import rolesApply from "../../assets/roles-apply.png";
-import profileImg from "../../assets/profile.png";
-import serverImg from "../../assets/server.png";
-import rolesQueues from "../../assets/roles-queues.png";
-import buildingImg from "../../assets/building.png";
-import buildingHour from "../../assets/building-hour.png";
+import rolesOverview from "../../assets/guides/roles/request-role/roles-overview.png";
+import rolesApply from "../../assets/guides/roles/request-role/roles-apply.png";
+import profileImg from "../../assets/guides/roles/request-role/profile.png";
+import serverImg from "../../assets/guides/roles/request-role/server.png";
+import rolesQueues from "../../assets/guides/roles/request-role/roles-queues.png";
+import buildingImg from "../../assets/guides/roles/request-role/building.png";
+import buildingHour from "../../assets/guides/roles/request-role/building-hour.png";
 
 const CARDS = [
   {
