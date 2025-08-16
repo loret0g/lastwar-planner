@@ -13,7 +13,7 @@ import defensetHero from "../../assets/guides/equipment/priority-equipment-hero/
 import healingHero from "../../assets/guides/equipment/priority-equipment-hero/healing-hero.png";
 
 // Portada de 'mejorar nivel en orden'
-import priorityEquipment from "../../assets/priority-equipment.png";
+import priorityEquipment from "../../assets/guides/equipment/priority-equipment.png";
 
 const CARDS = [
   {
