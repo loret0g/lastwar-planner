@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styles from "./Guides.module.css";
 
-// IMPORTA TODAS LAS IMÁGENES (así Vite las empaqueta bien)
 import rolesOverview from "../../assets/guides/roles/request-role/roles-overview.png";
 import rolesApply from "../../assets/guides/roles/request-role/roles-apply.png";
 import profileImg from "../../assets/guides/roles/request-role/profile.png";

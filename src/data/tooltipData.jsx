@@ -1,7 +1,6 @@
 import React from "react";
 import RadarTooltip from '../components/ToolTips/RadarToolTip'
 import LegendaryTask from '../components/ToolTips/LegendaryTasks'
-import AttackEnemy from "../components/ToolTips/AttackEnemy";
 
 import infoIcon from "../assets/tooltip/help.png";
 import dronChest from '../assets/tooltip/dron-chest.png'

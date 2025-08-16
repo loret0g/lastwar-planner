@@ -11,17 +11,28 @@ export default function QuickActions({ currentDay }) {
   const isThursday =
     typeof currentDay === "string" && currentDay.toLowerCase() === "jueves";
 
+  const shield =
+    typeof currentDay === "string" && (currentDay.toLowerCase() === "viernes" || currentDay.toLowerCase() === "sábado");
+
   return (
     <>
       <div className={styles.wrap}>
         <div className={styles.grid}>
-          {/* ✅ Botón que solo aparece el Jueves */}
           {isThursday && (
             <button
               className={`${styles.action} ${styles.highlight}`}
               onClick={() => setOpenKey("heros")}
             >
               Prioridad de héroes
+            </button>
+          )}
+
+          {shield && (
+            <button
+              className={`${styles.action} ${styles.highlight}`}
+              onClick={() => setOpenKey("shield")}
+            >
+              Poner escudo
             </button>
           )}
 
