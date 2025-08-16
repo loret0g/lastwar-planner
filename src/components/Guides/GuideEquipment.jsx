@@ -1,14 +1,19 @@
 import { useState } from "react";
 import styles from "./Guides.module.css";
 
-import equipmentFront from "../../assets/equipment-factory.png";
-import equipmentFactory from "../../assets/equipment-factory2.png";
-import disassembleEquipment from "../../assets/disassemble-equipment.png";
-import fusionEquipment from "../../assets/fusion-equipment.png";
+// Crear equipamiento:
+import equipmentFront from "../../assets/guides/equipment/create-equipment/equipment-factory.png";
+import equipmentFactory from "../../assets/guides/equipment/create-equipment/equipment-factory2.png";
+import disassembleEquipment from "../../assets/guides/equipment/create-equipment/disassemble-equipment.png";
+import fusionEquipment from "../../assets/guides/equipment/create-equipment/fusion-equipment.png";
 
-import attackHero from "../../assets/attack-hero.png";
-import defensetHero from "../../assets/defense-hero.png";
-import healingHero from "../../assets/healing-hero.png";
+// Prioridad de equipamiento
+import attackHero from "../../assets/guides/equipment/priority-equipment-hero/attack-hero.png";
+import defensetHero from "../../assets/guides/equipment/priority-equipment-hero/defense-hero.png";
+import healingHero from "../../assets/guides/equipment/priority-equipment-hero/healing-hero.png";
+
+// Portada de 'mejorar nivel en orden'
+import priorityEquipment from "../../assets/guides/equipment/priority-equipment.png";
 
 import priorityEquipment from "../../assets/priority-equipment.png";
 

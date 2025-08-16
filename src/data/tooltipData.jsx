@@ -3,11 +3,11 @@ import RadarTooltip from '../components/ToolTips/RadarToolTip'
 import LegendaryTask from '../components/ToolTips/LegendaryTasks'
 import AttackEnemy from "../components/ToolTips/AttackEnemy";
 
-import infoIcon from "../assets/help.png";
-import dronChest from '../assets/dron-chest.png'
-import gather from '../assets/resources.png'
-import droneDataImg from '../assets/drone.png'
-import skillMedalsImg from '../assets/skill-medals.png'
+import infoIcon from "../assets/tooltip/help.png";
+import dronChest from '../assets/tooltip/dron-chest.png'
+import gather from '../assets/tooltip/resources.png'
+import droneDataImg from '../assets/tooltip/drone.png'
+import skillMedalsImg from '../assets/tooltip/skill-medals.png'
 
 export const tooltipData = {
   radar: {
@@ -22,7 +22,7 @@ export const tooltipData = {
   legendaryTask: {
     icon: <img src={infoIcon} alt="Info" />,
     brief:
-      "Actualiza las tareas hasta que sean legendarias",
+      "Actualiza las tareas hasta que sean legendarias (doradas).",
     details: (
       <LegendaryTask />
     )

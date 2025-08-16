@@ -139,7 +139,7 @@
 }
 
 /* ===================================================
-   Estrategia (número + título + descripción) dentro del modal
+   RADARTOOLTIP.jsx
    =================================================== */
 .content .strategyList {
   counter-reset: step;
@@ -233,4 +233,86 @@
     text-align: center;
     font-size: 1.2rem;
   }
+}
+
+/* ===================================================
+   LEGENDARYTASKS.jsx
+   =================================================== */
+/* Galería con figuras y pies de foto */
+.gallery {
+  display: grid;
+  gap: 0.75rem;
+  grid-template-columns: 1fr;
+  margin-top: .5rem;
+}
+
+.fig img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  display: block;
+}
+
+.fig figcaption {
+  font-size: .9rem;
+  color: #555;
+  margin-top: .35rem;
+}
+
+/* Callouts de DO / DON'T */
+.callouts {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: .5rem;
+  margin-top: 1rem;
+}
+
+.do,
+.dont {
+  border-radius: 10px;
+  padding: .75rem .9rem;
+  border: 1px solid #ececec;
+  background: #fff;
+}
+
+.do { box-shadow: 0 0 0 3px rgba(72,162,97,.12); }
+.dont { box-shadow: 0 0 0 3px rgba(183,28,28,.12); }
+
+/* En pantallas medianas, dos columnas para la galería */
+@media (min-width: 700px) {
+  .gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+/* ===================================================
+   Guías (Legendary / genéricas dentro del modal)
+   =================================================== */
+
+/* Contenedor simple en columna para contenidos de guía */
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Título de la guía (si prefieres usarlo además de .content h2) */
+.title {
+  margin: 0 0 .25rem 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #222;
+}
+
+/* Lista de pasos (usa <ol>) */
+.steps {
+  margin: .5rem 0 0;
+  padding-left: 1.25rem;   /* dejamos numeración por defecto */
+  line-height: 1.6;
+  color: #444;
+  font-size: .95rem;
+}
+
+.steps li {
+  margin-bottom: .5rem;
 }

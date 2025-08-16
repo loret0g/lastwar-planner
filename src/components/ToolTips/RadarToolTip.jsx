@@ -1,6 +1,6 @@
 import React from "react";
 import modalStyles from "../Modal/Modal.module.css";
-import radarInfo from "../../assets/radar-info.png";
+import radarInfo from "../../assets/tooltip/radar/radar-info.png";
 
 export default function RadarTooltip() {
   return (
