@@ -128,7 +128,7 @@ export const DEFAULT_TASKS = {
       do: [
         { text: 'Guardar tareas de radar', tooltipKey: 'radar' },
         { text: 'Poner tropas a recolectar (que terminen después del reinicio del servidor para puntuar el lunes)', tooltipKey: 'gather' },
-        { text: 'Ir de compras', tooltipKey: null },
+        { text: 'Ir de compras', tooltipKey: 'buyResources' },
         { text: 'Tomar un Martini', tooltipKey: null }
       ],
       dont: [

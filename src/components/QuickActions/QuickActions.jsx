@@ -28,12 +28,21 @@ export default function QuickActions({ currentDay }) {
           )}
 
           {shield && (
+            <>
             <button
               className={`${styles.action} ${styles.highlight}`}
               onClick={() => setOpenKey("shield")}
             >
               Poner escudo
             </button>
+
+            <button
+              className={`${styles.action} ${styles.highlight}`}
+              onClick={() => setOpenKey("attack")}
+            >
+              Atacar al enemigo
+            </button>
+            </>
           )}
 
           <button

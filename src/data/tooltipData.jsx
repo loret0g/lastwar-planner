@@ -1,6 +1,7 @@
 import React from "react";
 import RadarTooltip from '../components/ToolTips/RadarToolTip'
 import LegendaryTask from '../components/ToolTips/LegendaryTasks'
+import Shopping from '../components/ToolTips/Shopping'
 
 import infoIcon from "../assets/tooltip/help.png";
 import dronChest from '../assets/tooltip/dron-chest.png'
@@ -57,6 +58,15 @@ export const tooltipData = {
       <>
         <img src={skillMedalsImg} alt="Minas" />
       </>
+  },
+
+  buyResources: {
+    icon: <img src={infoIcon} alt="Info" />,
+    brief:
+      "Existen varias tiendas donde canjear distintos tipos de monedas por objetos útiles para acelerar tu crecimiento.",
+    details: (
+      <Shopping />
+    )
   },
 
 

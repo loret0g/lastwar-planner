@@ -1,6 +1,9 @@
 import { useState } from "react";
 import styles from "./Guides.module.css";
 
+import shieldImg from "../../assets/guides/shield/land-shield.png";
+
+
 // Comprar escudo
 import shieldShop from "../../assets/guides/shield/buy-shield/go-shop.png";
 import shieldBuy from "../../assets/guides/shield/buy-shield/alliance-shop.png";
@@ -47,7 +50,7 @@ const CARDS = [
   {
     key: "put-shield",
     title: "Poner escudo",
-    thumb: shieldInventory2,
+    thumb: shieldImg,
     body: (
       <>
         <p>
