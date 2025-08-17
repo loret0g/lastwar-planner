@@ -1,5 +1,6 @@
 export const SECTIONS = [
   'Duelo de alianza',
+  'Marshall',
   'Tareas Diarias',
   'Carrera de armas',
   'Duelo de servidor',
@@ -128,7 +129,7 @@ export const DEFAULT_TASKS = {
       do: [
         { text: 'Guardar tareas de radar', tooltipKey: 'radar' },
         { text: 'Poner tropas a recolectar (que terminen después del reinicio del servidor para puntuar el lunes)', tooltipKey: 'gather' },
-        { text: 'Ir de compras', tooltipKey: null },
+        { text: 'Ir de compras', tooltipKey: 'buyResources' },
         { text: 'Tomar un Martini', tooltipKey: null }
       ],
       dont: [
@@ -143,7 +144,7 @@ export const DEFAULT_TASKS = {
     }
   },
 
-  'Tareas Diarias': {
+  'Marshall': {
     Lunes: {
       do: [
         { text: 'Hacer radar', tooltipKey: null },

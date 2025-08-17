@@ -29,7 +29,7 @@ const CARDS = [
   },
 ];
 
-export default function GuideRoles() {
+export default function GuideHeros() {
   const [selected, setSelected] = useState(null);
   const card = CARDS.find((c) => c.key === selected);
 
