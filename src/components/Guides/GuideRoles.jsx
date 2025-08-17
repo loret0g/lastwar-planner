@@ -59,7 +59,7 @@ const CARDS = [
           <li>Planifica tus aceleradores para usarlos mientras el cargo esté activo.</li>
         </ul>
 
-        <p className={styles.note}>Consejo:</p>
+        {/* <p className={styles.note}>Consejo:</p> */}
       </>
     ),
   },

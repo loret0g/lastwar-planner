@@ -145,22 +145,7 @@ export const DEFAULT_TASKS = {
   },
 
   'Marshall': {
-    Lunes: {
-      do: [
-        { text: 'Hacer radar', tooltipKey: null },
-        { text: 'Donar al centro de ayuda', tooltipKey: null },
-        { text: 'Entrenar tropas', tooltipKey: null }
-      ],
-      dont: []
-    },
-    Martes: {
-      do: [
-        { text: 'Guardar tareas radar', tooltipKey: null },
-        { text: 'Esperar carrera de armas de construcción para abrir regalos', tooltipKey: null }
-      ],
-      dont: []
-    },
-    // …otros días…
+    // QUE DEBO PONER AQUÍ?
   },
 
   'Tareas Diarias': {
