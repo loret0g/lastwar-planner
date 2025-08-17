@@ -63,7 +63,7 @@ const CARDS = [
           <li>Cañón de riel</li>
           <li>Chip de datos</li>
         </ul>
-        <img src="/src/assets/attack-hero.png" alt="Heroe de ataque" />
+        <img src={attackHero} alt="Heroe de ataque" />
 
         <h3>Héroes de defensa</h3>
         <ul>
