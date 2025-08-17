@@ -103,6 +103,10 @@
   margin: 0;
   color: #444;
   font-size: 0.95rem;
+  list-style: none;
+}
+.content ol.stepsIndented li {
+  list-style: decimal;
 }
 .content li { margin-bottom: 0.5rem; }
 
