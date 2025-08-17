@@ -1,5 +1,6 @@
 export const SECTIONS = [
   'Duelo de alianza',
+  'Marshall',
   'Tareas Diarias',
   'Carrera de armas',
   'Duelo de servidor',
@@ -143,7 +144,7 @@ export const DEFAULT_TASKS = {
     }
   },
 
-  'Tareas Diarias': {
+  'Marshall': {
     Lunes: {
       do: [
         { text: 'Hacer radar', tooltipKey: null },
