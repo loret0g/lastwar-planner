@@ -18,7 +18,7 @@ export default function LegendaryTasks() {
       </p>
 
       <h3>Pasos</h3>
-      <ol className={styles.steps}>
+      <ol className={`${styles.steps} ${styles.stepsIndented}`}>
         <li>
           <strong>Busca la dorada (UR).</strong> Ignora las moradas y azules. Usa el botón
           <em> Actualizar</em> hasta que veas una dorada.

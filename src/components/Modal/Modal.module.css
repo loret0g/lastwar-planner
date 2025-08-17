@@ -2,9 +2,9 @@
 .overlay {
   position: fixed;
   inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0,0,0,0.5);
   display: flex;
-  align-items: center;
+  align-items: center;     /* desktop centrado */
   justify-content: center;
   z-index: 3000;
   padding: 1rem;
@@ -14,54 +14,70 @@
 .modal {
   position: relative;
   background: #ffffff;
-  border-radius: 8px;
+  border-radius: 12px;
   width: 100%;
-  max-width: 480px;
+  max-width: 640px;
   max-height: 90vh;
-  overflow-y: auto;
-  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.2);
-  animation: slideDown 0.3s ease-out;
+  overflow: hidden;            /* importante: el header sticky queda dentro */
+  box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+  animation: slideDown 0.25s ease-out;
   box-sizing: border-box;
-  /* incluye padding en el ancho */
+  display: flex;
+  flex-direction: column;
 }
 
-/* Asegurar box-sizing en el contenido también */
+/* Contenido scrolleable dentro del modal */
 .content {
   display: flex;
   flex-direction: column;
   gap: 1rem;
-  padding: 1.5rem;
+  padding: 1.25rem 1.25rem 1.25rem;
   font-family: system-ui, sans-serif;
   box-sizing: border-box;
+  overflow-y: auto;            /* el scroll es del contenido, no del modal */
 }
 
 /* Animación de aparición */
 @keyframes slideDown {
-  from {
-    opacity: 0;
-    transform: translateY(-20px);
-  }
-
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(-12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-/* Botón de cerrar */
-.closeBtn {
+/* ====== CIERRE: VERSIÓN DESKTOP (botón absoluto) ====== */
+.closeBtnAbs {
   position: absolute;
-  top: 0.75rem;
-  right: 0.75rem;
-  background: none;
+  top: 0.5rem;
+  right: 0.5rem;
+  width: 36px;
+  height: 36px;
+  line-height: 36px;
+  text-align: center;
+  background: rgba(0,0,0,0.06);
   border: none;
+  border-radius: 999px;
   font-size: 1.4rem;
   cursor: pointer;
-  color: #666;
-  transition: color 0.2s;
+  color: #333;
+  transition: background 0.2s, transform 0.2s;
+  z-index: 2;
+}
+.closeBtnAbs:hover { background: rgba(0,0,0,0.1); transform: scale(1.03); }
+
+/* ====== CIERRE: VERSIÓN MÓVIL (top bar sticky) ====== */
+.topBar {
+  display: none;                /* oculto en desktop */
 }
 
-.closeBtn:hover {
+.closeBtnSticky {
+  width: 44px;                  /* área táctil grande */
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+  background: rgba(0,0,0,0.06);
+  border: none;
+  border-radius: 999px;
+  font-size: 1.5rem;
+  cursor: pointer;
   color: #333;
 }
 
@@ -85,234 +101,120 @@
 .content ol,
 .content ul {
   margin: 0;
-  padding-left: 1.25rem;
   color: #444;
   font-size: 0.95rem;
 }
+.content li { margin-bottom: 0.5rem; }
 
-.content li {
-  margin-bottom: 0.5rem;
-}
-
-/* Galería de imágenes */
+/* Galería + imágenes seguras */
 .imageGallery {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(120px,1fr));
   gap: 0.5rem;
 }
-
-.imageGallery img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-  border-radius: 4px;
-  object-fit: cover;
-  margin: 0.75rem auto;
-}
-
-/* Ajuste para cualquier otra imagen dentro del contenido */
+.imageGallery img,
 .content img {
   display: block;
   max-width: 100%;
   height: auto;
-  margin: 0.75rem auto;
   border-radius: 0.8rem;
+  margin: 0.75rem auto 0;
 }
 
-/* Responsive móvil */
-@media (max-width: 500px) {
+/* ====== MÓVIL ====== */
+@media (max-width: 600px) {
+  /* Mayor área clicable fuera del modal y espacio para la URL/navegador */
+  .overlay {
+    align-items: flex-start; /* pegamos arriba */
+    padding: max(12px, env(safe-area-inset-top, 12px)) 12px 12px;
+  }
+
   .modal {
-    max-width: 100%;
-    max-height: 95vh;
-    border-radius: 6px;
+    width: 100%;
+    max-width: none;
+    height: calc(100dvh - max(12px, env(safe-area-inset-top, 12px)) - 12px);
+    max-height: none;         /* usamos height directo */
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  /* Oculta botón absoluto; usamos top bar sticky */
+  .closeBtnAbs { display: none; }
+
+  .topBar {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    position: sticky;
+    z-index: 3;
+    padding: 0.5rem;
+    background: linear-gradient(#fff, rgba(255,255,255,0.98));
+    border-bottom: 1px solid #eee;
   }
 
   .content {
-    padding: 1rem;
+    padding: 0.75rem 1rem 1rem;
   }
 }
 
+/* ====== DESKTOP ANCHO ====== */
 @media (min-width: 1024px) {
-  .modal {
-    max-width: 640px;
-  }
+  .modal { max-width: 720px; }
 }
 
-/* ===================================================
-   RADARTOOLTIP.jsx
-   =================================================== */
-.content .strategyList {
-  counter-reset: step;
-  margin: 1rem 0;
-  padding: 0;
-  list-style: none;
+/* =========================================
+   RADAR strategy list
+   ========================================= */
 
-}
-
-.content .strategyList li {
-  counter-increment: step;
-  margin-bottom: 1.5rem;
-}
-
+/* RADAR strategy list */
+.content .strategyList { counter-reset: step; margin: 1rem 0; padding: 0; list-style: none; }
+.content .strategyList li { counter-increment: step; margin-bottom: 1.5rem; }
 .content .strategyList li h3 {
-  position: relative;
-  margin: 0 0 0.5rem 0;
-  padding-left: 2.5rem;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #333;
+  position: relative; margin: 0 0 0.5rem 0; padding-left: 2.5rem;
+  font-size: 1rem; font-weight: 600; color: #333;
 }
-
-/* Título destacado para la sección de estrategia */
 .strategyTitle {
-  text-align: center;
-  background: #48a261;            /* verde primario */
-  color: #fff;
-  padding: 0.75rem 1rem;          /* espacio interior */
-  border-radius: 0.5rem;          /* esquinas redondeadas */
-  font-size: 1.25rem;             /* un pelín más grande */
-  font-weight: 600;
-  margin: 1.5rem 0 1rem;          /* separación arriba y abajo */
+  text-align: center; background: #48a261; color: #fff;
+  padding: 0.75rem 1rem; border-radius: 0.5rem;
+  font-size: 1.25rem; font-weight: 600; margin: 1.5rem 0 1rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
 }
-
-
 .content .strategyList li h3::before {
-  content: counter(step);
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 2rem;
-  height: 2rem;
-  background: orange;
-  color: #fff;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: bold;
-  font-size: 0.9rem;
+  content: counter(step); position: absolute; left: 0; top: 0;
+  width: 2rem; height: 2rem; background: orange; color: #fff;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  font-weight: bold; font-size: 0.9rem;
 }
-
-.content .strategyList li p {
-  margin: 0;
-  padding-left: 2.5rem;
-  line-height: 1.5;
-  color: #555;
-  font-size: 0.9rem;
-}
+.content .strategyList li p { margin: 0; padding-left: 2.5rem; line-height: 1.5; color: #555; font-size: 0.9rem; }
 
 .content li p.radarNote {
-  margin-top: 2rem;
-  font-weight: bold;
-  font-size: 1.2rem;
-  padding-left: 0;
-  text-align: center;
+  margin-top: 2rem; font-weight: bold; font-size: 1.2rem; padding-left: 0; text-align: center;
 }
-
-/* Ajustes para móvil */
 @media (max-width: 600px) {
-  .content .strategyList li h3 {
-    padding-left: 2rem;
-    font-size: 0.95rem;
-  }
-
-  .content .strategyList li h3::before {
-    width: 1.8rem;
-    height: 1.8rem;
-    font-size: 0.85rem;
-  }
-
-  .content .strategyList li p {
-    padding-left: 2rem;
-    font-size: 0.88rem;
-  }
-
-  .content li p.radarNote {
-    padding-left: 0;
-    text-align: center;
-    font-size: 1.2rem;
-  }
+  .content .strategyList li h3 { padding-left: 2rem; font-size: 0.95rem; }
+  .content .strategyList li h3::before { width: 1.8rem; height: 1.8rem; font-size: 0.85rem; }
+  .content .strategyList li p { font-size: 0.88rem; }
+  .content li p.radarNote { font-size: 1.2rem; }
 }
 
-/* ===================================================
-   LEGENDARYTASKS.jsx
-   =================================================== */
-/* Galería con figuras y pies de foto */
-.gallery {
-  display: grid;
-  gap: 0.75rem;
-  grid-template-columns: 1fr;
-  margin-top: .5rem;
+/* LEGENDARY TASKS */
+.stepsIndented {
+  padding-left: 1.25rem;
 }
 
-.fig img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  display: block;
-}
-
-.fig figcaption {
-  font-size: .9rem;
-  color: #555;
-  margin-top: .35rem;
-}
-
-/* Callouts de DO / DON'T */
-.callouts {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: .5rem;
-  margin-top: 1rem;
-}
-
-.do,
-.dont {
-  border-radius: 10px;
-  padding: .75rem .9rem;
-  border: 1px solid #ececec;
-  background: #fff;
-}
-
-.do { box-shadow: 0 0 0 3px rgba(72,162,97,.12); }
+.gallery { display: grid; gap: 0.75rem; grid-template-columns: 1fr; margin-top: .5rem; }
+.fig img { width: 100%; height: auto; border-radius: 10px; display: block; }
+.fig figcaption { font-size: .9rem; color: #555; margin-top: .35rem; }
+.callouts { display: grid; grid-template-columns: 1fr; gap: .5rem; margin-top: 1rem; }
+.do, .dont { border-radius: 10px; padding: .75rem .9rem; border: 1px solid #ececec; background: #fff; }
+.do   { box-shadow: 0 0 0 3px rgba(72,162,97,.12); }
 .dont { box-shadow: 0 0 0 3px rgba(183,28,28,.12); }
-
-/* En pantallas medianas, dos columnas para la galería */
 @media (min-width: 700px) {
-  .gallery {
-    grid-template-columns: 1fr 1fr;
-  }
+  .gallery { grid-template-columns: 1fr 1fr; }
 }
 
-/* ===================================================
-   Guías (Legendary / genéricas dentro del modal)
-   =================================================== */
-
-/* Contenedor simple en columna para contenidos de guía */
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-/* Título de la guía (si prefieres usarlo además de .content h2) */
-.title {
-  margin: 0 0 .25rem 0;
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: #222;
-}
-
-/* Lista de pasos (usa <ol>) */
-.steps {
-  margin: .5rem 0 0;
-  padding-left: 1.25rem;   /* dejamos numeración por defecto */
-  line-height: 1.6;
-  color: #444;
-  font-size: .95rem;
-}
-
-.steps li {
-  margin-bottom: .5rem;
-}
+/* Contenedor de guías genéricas */
+.wrapper { display: flex; flex-direction: column; gap: 1rem; }
+.title   { margin: 0 0 .25rem 0; font-size: 1.25rem; font-weight: 700; color: #222; }
+.steps   { margin: .5rem 0 0; line-height: 1.6; color: #444; font-size: .95rem; }
+.steps li{ margin-bottom: .5rem; }
