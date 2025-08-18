@@ -23,7 +23,6 @@ export default function Season1() {
   return (
     <div className={styles.wrapper}>
       <header className={styles.header}>
-        <h2 className={styles.title}>Temporada 1</h2>
         <p className={styles.subtitle}>Selecciona tu idioma para ver la guía.</p>
       </header>
 

@@ -7,22 +7,20 @@ import { SECTION_REGISTRY } from "./sections";
 import "./index.css";
 
 export default function App() {
-  // --- Secciones visibles (usa .env para mostrar todas o solo algunas) ---
-  const showAll = import.meta.env.VITE_SHOW_ALL === "true";
-  const allSections = Object.keys(SECTION_REGISTRY);
-  const sectionsList = showAll ? allSections : ["Duelo de alianza"]; // ajusta tu whitelist si quieres
+  // ——— Mostrar SIEMPRE todas las secciones ———
+  const sectionsList = Object.keys(SECTION_REGISTRY);
 
-  // --- Día inicial normalizado a ES ---
+  // Día inicial normalizado a ES
   const todayName = new Date().toLocaleDateString("es-ES", { weekday: "long" });
   const normalizedToday =
     todayName.charAt(0).toUpperCase() + todayName.slice(1).toLowerCase();
   const initialDay = DAYS.includes(normalizedToday) ? normalizedToday : "Lunes";
 
-  // --- Estado principal ---
+  // Estado principal
   const [section, setSection] = useState(sectionsList[0]);
   const [day, setDay] = useState(initialDay);
 
-  // --- Sidebar en móvil ---
+  // Sidebar en móvil
   const [isSidebarOpen, setSidebarOpen] = useState(false);
   const sidebarRef = useRef(null);
 
@@ -42,6 +40,14 @@ export default function App() {
 
   // Entrada actual del registry
   const entry = SECTION_REGISTRY[section];
+
+  // Si por algún motivo cambia el registry y la sección ya no existe,
+  // caemos a la primera disponible.
+  useEffect(() => {
+    if (!entry && sectionsList.length) {
+      setSection(sectionsList[0]);
+    }
+  }, [entry, sectionsList]);
 
   return (
     <div className="layout">
