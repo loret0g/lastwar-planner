@@ -6,6 +6,7 @@ import TaskBoard from "./alliance-duel/TaskBoard";
 import { ALLIANCE_DUEL_TASKS } from "./alliance-duel/tasks";
 import Marshall from "./marshall/Marshall";
 import HQRequirements from "./hq-requirements/HQRequirements";
+import Season1 from "./season1/Season1";
 
 // Registro central de secciones
 export const SECTION_REGISTRY = {
@@ -27,6 +28,11 @@ export const SECTION_REGISTRY = {
   "Requisitos CG": {
     usesDays: false,
     Component: HQRequirements,
+  },
+
+  "Temporada 1": {
+    usesDays: false,
+    Component: Season1,
   },
 
   // El resto:
