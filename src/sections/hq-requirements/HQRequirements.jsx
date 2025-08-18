@@ -6,7 +6,6 @@ export default function HQRequirements() {
   return (
     <section className={styles.wrapper} aria-labelledby="hqTitle">
       <header className={styles.header}>
-        <h2 id="hqTitle" className={styles.title}>Requisitos CG</h2>
         <p className={styles.help}>
           Edificios necesarios para subir cada nivel del Cuartel General.
         </p>
