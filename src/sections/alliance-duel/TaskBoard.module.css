@@ -1,0 +1,112 @@
+/* ===== Layout a 2 columnas (desktop) / 1 col (móvil) ===== */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 1rem;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Tarjetas base ===== */
+.cardHeader {
+  padding: 0.75rem 1rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  border-radius: 10px 10px 0 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cardBody {
+  background: #fff;
+  border: 1px solid #e6e6e6;
+  border-top: 0;
+  border-radius: 0 0 10px 10px;
+  padding: 0.75rem 1rem;
+}
+
+/* Chevron decorativo del título */
+.chevron {
+  display: inline-block;
+  margin-right: 0.25rem;
+  transform: translateY(-1px);
+}
+
+/* ===== “Qué hacer” ===== */
+.doHeader {
+  background: #48a261;
+  color: #fff;
+  border: 1px solid #3f8f56;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.item {
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed #eee;
+}
+
+.item:last-child {
+  border-bottom: 0;
+}
+
+/* ===== “Qué NO hacer” (card fija) ===== */
+.dontCol {
+  position: relative;
+}
+
+.dontCard {
+  position: sticky;
+  /* respeta notch / barra del navegador en móvil */
+  top: calc(env(safe-area-inset-top, 0px) + 0.75rem);
+  z-index: 2;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.dontHeader {
+  background: #b71c1c;
+  color: #fff;
+  border: 1px solid #9f1616;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* puntito de alerta */
+.warningDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #ffd166;
+  box-shadow: 0 0 0 3px rgba(255, 209, 102, 0.25);
+}
+
+/* lista de NO hacer */
+.dontList {
+  list-style: none;
+  margin: 0 0 0.75rem 0;
+  padding: 0;
+}
+
+.dontItem {
+  color: #b71c1c;
+  font-weight: 600;
+  padding: 0.4rem 0;
+  border-bottom: 1px dashed #f2c7c7;
+}
+
+.dontItem:last-child {
+  border-bottom: 0;
+}
