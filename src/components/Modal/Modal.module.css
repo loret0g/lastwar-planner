@@ -223,3 +223,35 @@
 .steps   { margin: .5rem 0 0; line-height: 1.6; color: #444; font-size: .95rem; }
 .steps li{ margin-bottom: .5rem; }
 
+/* ===== Pantalla completa para visores de imagen ===== */
+.fullscreen {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
+  border-radius: 0;
+  background: transparent;   /* dejamos que se vea el overlay oscuro */
+  box-shadow: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* En fullscreen el contenido no lleva padding */
+.contentFlush { padding: 0; }
+
+/* Botón cerrar visible en móvil (respeta notch/URL bar) */
+.closeBtnSolid {
+  position: fixed;                 /* por encima de la imagen */
+  top: calc(env(safe-area-inset-top, 8px) + 10px);
+  right: calc(env(safe-area-inset-right, 8px) + 10px);
+  width: 44px;
+  height: 44px;
+  line-height: 44px;
+  background: rgba(0,0,0,.55);
+  color: #fff;
+  border-radius: 999px;
+  font-size: 1.6rem;
+  z-index: 4000;
+}
+.closeBtnSolid:hover { background: rgba(0,0,0,.7); color:#fff; }
