@@ -3,6 +3,7 @@ import styles from "./Guides.module.css";
 
 import priorityTank from "../../assets/guides/heros/tank-priority.png";
 import priorityAircraft from "../../assets/guides/heros/aircraft-priority.png";
+import priorityMissile from "../../assets/guides/heros/missile-priority.png";
 
 
 const CARDS = [
@@ -24,6 +25,17 @@ const CARDS = [
     body: (
       <>
         <img src={priorityAircraft} alt="Héroes de aeronaves" />
+      </>
+    ),
+  },
+
+  {
+    key: "missile-priority",
+    title: "Héroes de misiles",
+    thumb: priorityMissile,
+    body: (
+      <>
+        <img src={priorityMissile} alt="Héroes de misiles" />
       </>
     ),
   },

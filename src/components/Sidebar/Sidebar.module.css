@@ -1,84 +1,104 @@
-/* --- estilos de escritorio --- */
+/* ===== Desktop (panel lateral fijo) ===== */
 .sidebar {
+  position: sticky;
+  top: 0;
+  align-self: stretch;
+
   width: 200px;
-  background: #fff;
+  background: #ffffff;
+  border-right: 1px solid #eaeaea;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  padding: 1rem;
-  border-right: 1px solid #ddd;
-  z-index: 1000;
+  gap: 0.6rem;
+
+  /* que pueda scrollear si hay muchas secciones */
+  max-height: 100vh;
+  overflow-y: auto;
+
+  /* estética */
+  box-shadow: 0 0 0 1px rgba(0,0,0,0.02), 0 8px 24px rgba(0,0,0,0.05);
+  border-radius: 0 8px 8px 0;
 }
 
+/* Los botones del menú */
 .sidebar button {
-  padding: 0.6rem;
-  border: 1px solid #aaa;
+  width: 100%;
+  padding: 0.7rem 0.85rem;
+  border-radius: 10px;
+  border: 1px solid #e7e7e7;
   background: #fafafa;
+  color: #1e272e;
+  font: inherit;
   cursor: pointer;
-  text-align: left;
-  border-radius: 4px;
-  transition: background 0.2s;
+  transition: background .15s ease, border-color .15s ease, transform .06s ease, box-shadow .15s ease;
+  margin: 0.5rem 0;
 }
 
 .sidebar button:hover {
-  background: #f0f0f0;
+  background: #f3f3f3;
+  border-color: #e0e0e0;
 }
 
-.sidebar .active {
-  background: #ffa726;
+.sidebar button:active { transform: translateY(1px); }
+
+.active {
+  background: linear-gradient(180deg, #ffa726, #ff9800);
   color: #fff;
   border-color: #ff9800;
+  box-shadow: 0 3px 12px rgba(255,152,0,0.35);
 }
 
-/* --- override móvil: overlay full-screen --- */
+/* ===== Móvil: overlay a pantalla completa ===== */
 @media (max-width: 768px) {
+  /* Oculta el panel normal; solo usamos el overlay cuando .mobileOpen está presente */
   .sidebar {
     display: none;
+    box-shadow: none;
+    border-right: none;
+    border-radius: 0;
+    width: 100%;
+    max-height: none;
+    overflow: visible;
   }
 
   .mobileOpen {
-    /* overlay full-screen */
+    display: flex;                /* reactivamos */
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(30, 40, 50, 0.85);
-    display: flex;
-    flex-direction: column;
+    inset: 0;
+    width: 100vw;
+    height: 100dvh;
+    background: rgba(30,40,50,0.85);
+    backdrop-filter: blur(4px);
+    z-index: 1000;
+
     align-items: center;
     justify-content: center;
-    gap: 1rem;
     padding: 2rem 1rem;
-    z-index: 1000;
-    overflow-y: auto;
-    backdrop-filter: blur(4px);
   }
 
-  /* items como cards grandes */
+  .inner {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: min(92%, 360px);
+  }
+
   .mobileOpen button {
-    width: 90%;
-    max-width: 320px;
+    width: 100%;
     padding: 1rem;
     border: none;
-    border-radius: 8px;
+    border-radius: 12px;
     background: #fff;
     color: #1e272e;
-    font-size: 1.1rem;
+    font-size: 1.05rem;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.18);
   }
 
-  .mobileOpen button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-
-  /* activo con colores de la marca */
   .mobileOpen .active {
     background: #ffa726;
     color: #fff;
-    box-shadow: 0 4px 12px rgba(255, 152, 0, 0.5);
+    box-shadow: 0 6px 16px rgba(255,152,0,0.45);
   }
 }
