@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 import Header from "./components/Header/Header";
 import Sidebar from "./components/Sidebar/Sidebar";
 import DayTabs from "./components/DayTabs/DayTabs";
@@ -7,83 +7,68 @@ import { SECTION_REGISTRY } from "./sections";
 import "./index.css";
 
 export default function App() {
-  // ——— Mostrar SIEMPRE todas las secciones ———
   const sectionsList = Object.keys(SECTION_REGISTRY);
 
-  // Día inicial normalizado a ES
+  // Día inicial
   const todayName = new Date().toLocaleDateString("es-ES", { weekday: "long" });
   const normalizedToday =
     todayName.charAt(0).toUpperCase() + todayName.slice(1).toLowerCase();
   const initialDay = DAYS.includes(normalizedToday) ? normalizedToday : "Lunes";
 
-  // Estado principal
   const [section, setSection] = useState(sectionsList[0]);
   const [day, setDay] = useState(initialDay);
-
-  // Sidebar en móvil
   const [isSidebarOpen, setSidebarOpen] = useState(false);
-  const sidebarRef = useRef(null);
 
+  // Esc para cerrar overlay
   useEffect(() => {
-    function handleClickOutside(event) {
-      if (
-        isSidebarOpen &&
-        sidebarRef.current &&
-        !sidebarRef.current.contains(event.target)
-      ) {
-        setSidebarOpen(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
+    function onKey(e) { if (e.key === "Escape") setSidebarOpen(false); }
+    if (isSidebarOpen) document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
   }, [isSidebarOpen]);
 
-  // Entrada actual del registry
+  // Cierra overlay si vuelves a escritorio
+  useEffect(() => {
+    const mq = window.matchMedia("(min-width: 769px)");
+    const handler = e => { if (e.matches) setSidebarOpen(false); };
+    mq.addEventListener("change", handler);
+    return () => mq.removeEventListener("change", handler);
+  }, []);
+
   const entry = SECTION_REGISTRY[section];
 
-  // Si por algún motivo cambia el registry y la sección ya no existe,
-  // caemos a la primera disponible.
+  // Salvaguarda si cambiara el registry
   useEffect(() => {
-    if (!entry && sectionsList.length) {
-      setSection(sectionsList[0]);
-    }
+    if (!entry && sectionsList.length) setSection(sectionsList[0]);
   }, [entry, sectionsList]);
 
   return (
     <div className="layout">
       <Header />
 
-      {/* Toggle para móvil */}
+      {/* Toggle móvil */}
       <button
         className="toggle-sections-btn"
-        onClick={() => setSidebarOpen((o) => !o)}
+        onClick={() => setSidebarOpen(o => !o)}
       >
         {isSidebarOpen ? "▲ Secciones" : "▼ Secciones"}
       </button>
 
       <div className="content">
-        {/* Sidebar con ref para clicks fuera */}
-        <div ref={sidebarRef}>
-          <Sidebar
-            sections={sectionsList}
-            current={section}
-            isOpen={isSidebarOpen}
-            onSelect={(sec) => {
-              setSection(sec);
-              setSidebarOpen(false);
-            }}
-          />
-        </div>
+        <Sidebar
+          sections={sectionsList}
+          current={section}
+          isOpen={isSidebarOpen}
+          onSelect={(sec) => { setSection(sec); setSidebarOpen(false); }}
+          onClose={() => setSidebarOpen(false)}
+        />
 
-        <main className="main">
+        <main className="main" onClick={() => isSidebarOpen && setSidebarOpen(false)}>
           <h1>{section}</h1>
 
-          {/* Tabs de día solo si la sección lo necesita */}
           {entry?.usesDays && (
             <DayTabs days={DAYS} current={day} onSelect={setDay} />
           )}
 
-          {/* Render de la sección con sus props calculadas */}
           {entry && (
             <entry.Component
               {...(entry.getProps ? entry.getProps({ day }) : { day })}

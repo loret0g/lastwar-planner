@@ -26,7 +26,7 @@ body {
   display: flex;
   flex: 1;
   position: relative;  /* para overlay y dropdown */
-  overflow: hidden;
+  /* overflow: hidden; */
 }
 
 .main {
@@ -58,15 +58,6 @@ h1 {
 /* =======================================
    Overlay para cerrar Sidebar
    ======================================= */
-.sidebar-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  z-index: 900; /* justo debajo del sidebar (1000) */
-}
 
 /* =======================================
    Responsive (<= 768px)
