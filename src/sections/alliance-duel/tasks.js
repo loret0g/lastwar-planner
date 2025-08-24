@@ -26,7 +26,7 @@ export const ALLIANCE_DUEL_TASKS = {
       { text: 'Abrir los regalos de construcción que se han guardado durante toda la semana', tooltipKey: null },
       { text: 'Utilizar aceleradores de construcción', tooltipKey: null },
       { text: 'Mandar los 4 camiones LEGENDARIOS', tooltipKey: null },
-      { text: 'Realizar únicamente tareas legendarias', tooltipKey: 'legendaryTask' },
+      { text: 'Realizar únicamente tareas legendarias', tooltipKey: 'legendaryTasks' },
       { text: 'Usar tickets de reclutamiento de SUPERVIVIENTES (no de héroes)', tooltipKey: null }
     ],
     dont: [
@@ -99,7 +99,7 @@ export const ALLIANCE_DUEL_TASKS = {
   Sábado: {
     do: [
       { text: 'Mandar los 4 camiones LEGENDARIOS', tooltipKey: null },
-      { text: 'Realizar únicamente tareas legendarias', tooltipKey: 'legendaryTask' },
+      { text: 'Realizar únicamente tareas legendarias', tooltipKey: 'legendaryTasks' },
       { text: 'ATACAR AL ENEMIGO', tooltipKey: 'attackEnemy' },
       { text: 'Usar aceleradores para curar tropas', tooltipKey: null },
       { text: 'Puedes usar las tareas de radar aunque no puntúan', tooltipKey: null },
