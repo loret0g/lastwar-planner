@@ -1,5 +1,5 @@
 import React from "react";
-import RadarTooltip from '../components/Tooltips/RadarToolTip'
+import Radar from '../components/Tooltips/Radar'
 import LegendaryTask from '../components/Tooltips/LegendaryTasks'
 import Shopping from '../components/Tooltips/Shopping'
 
@@ -15,7 +15,7 @@ export const tooltipData = {
     brief:
       "Es importante que el contador no llegue al límite o se perderán tareas.",
     details: (
-      <RadarTooltip />
+      <Radar />
     ),
   },
 
