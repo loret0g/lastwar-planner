@@ -1,7 +1,11 @@
 import React from "react";
-import Radar from '../components/Tooltips/Radar'
-import LegendaryTask from '../components/Tooltips/LegendaryTasks'
-import Shopping from '../components/Tooltips/Shopping'
+// import Radar from '../components/Tooltips/Radar'
+// import LegendaryTask from '../components/Tooltips/LegendaryTasks'
+// import Shopping from '../components/Tooltips/Shopping'
+
+import Radar from "../components/Tooltips/Radar";
+import LegendaryTasks from "../components/Tooltips/LegendaryTasks";
+import Shopping from "../components/Tooltips/Shopping";
 
 import infoIcon from "../assets/tooltip/help.png";
 import dronChest from '../assets/tooltip/dron-chest.png'
@@ -19,12 +23,12 @@ export const tooltipData = {
     ),
   },
 
-  legendaryTask: {
+  legendaryTasks: {
     icon: <img src={infoIcon} alt="Info" />,
     brief:
       "Actualiza las tareas hasta que sean legendarias (doradas).",
     details: (
-      <LegendaryTask />
+      <LegendaryTasks />
     )
   },
 
