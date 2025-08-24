@@ -115,7 +115,7 @@
 }
 .reqBullet {
   width: 6px; height: 6px; border-radius: 999px;
-  background: var(--amber-1);
+  background: #48a261;
   box-shadow: 0 0 0 3px rgba(235,178,75,.18);
   margin-top: .45rem;
 }

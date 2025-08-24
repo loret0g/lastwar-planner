@@ -26,7 +26,6 @@ body {
   display: flex;
   flex: 1;
   position: relative;  /* para overlay y dropdown */
-  /* overflow: hidden; */
 }
 
 .main {
@@ -94,4 +93,42 @@ h1 {
   .tabs .tab {
     display: inline-block;
   }
+}
+
+/* ======= Section title card (a juego con las tabs) ======= */
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin: .25rem 0 .75rem;
+  padding: .75rem 1rem;
+
+  background: #fff;
+  border: 1px solid #eee;
+  border-radius: 14px;
+  box-shadow: 0 6px 20px rgba(0,0,0,.06);
+}
+
+.section-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffa726, #ff9800);
+  box-shadow: 0 0 0 6px rgba(255,152,0,.18);
+  flex: 0 0 auto;
+}
+
+.section-title {
+  margin: 0;
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: #1f2937;
+  font-size: clamp(1.25rem, 1rem + 1.1vw, 1.6rem);
+  line-height: 1.2;
+}
+
+/* compacta un pelín en móvil */
+@media (max-width: 560px) {
+  .section-header { padding: .6rem .8rem; border-radius: 12px; }
+  .section-title  { font-size: clamp(1.2rem, 1rem + 1vw, 1.45rem); }
 }

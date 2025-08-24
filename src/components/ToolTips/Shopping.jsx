@@ -19,11 +19,16 @@ export default function Shopping() {
     <div className={styles.wrapper}>
       <h2 className={styles.title}>Tiendas gratuitas</h2>
 
+      <p>
+        Menos en la tienda de diamantes, los recursos que se pueden comprar son limitados y cada lunes se renuevan, 
+        por eso el domingo está bien comprar lo que pueda ser útil para la semana siguiente. (como la energía, aceleradores, fragmentos...)
+      </p>
+
       <div style={grid}>
         <article style={card}>
           <h3 style={h3}>🛒 Tienda de Diamantes</h3>
           <p>
-            Es la tienda básica y siempre disponible. Sin embargo, se recomienda
+            Tienda siempre disponible e ilimitada. Se recomienda
             usarla como último recurso, una vez hayas agotado las opciones de otras
             tiendas más rentables.
           </p>
@@ -33,7 +38,7 @@ export default function Shopping() {
           <h3 style={h3}>💎 Tienda VIP</h3>
           <p>
             Se renueva cada semana, necesitas el VIP para usarla y ofrece los objetos
-            más valiosos del juego (aceleradores de 8&nbsp;h, energía, fragmentos de
+            más valiosos del juego (aceleradores de 8h, energía, fragmentos de
             héroes universales, etc.). Aunque es muy eficaz, requiere muchos diamantes,
             por lo que conviene elegir bien tus compras.
           </p>
@@ -53,7 +58,7 @@ export default function Shopping() {
           <p>
             Se actualiza mensualmente y es la mejor fuente de planos legendarios de
             equipamiento, algo que no se puede obtener fácilmente sin pagar. Muy útil
-            para mejorar tu equipo sin gastar dinero real.
+            para mejorar tu equipo sin gastar dinero real. <strong>Compra únicamente 'planos de equipamiento'.</strong>
           </p>
         </article>
 
@@ -61,7 +66,7 @@ export default function Shopping() {
           <h3 style={h3}>🎯 Tienda de Campaña</h3>
           <p>
             Aquí puedes canjear las medallas que obtienes al completar misiones de campaña
-            por cofres de recursos, energía y fragmentos universales. Es una buena forma
+            por cofres de recursos, fragmentos universales, piezas de dron... Es una buena forma
             de conseguir materiales sin gastar diamantes.
           </p>
         </article>

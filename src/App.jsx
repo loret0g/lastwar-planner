@@ -21,7 +21,9 @@ export default function App() {
 
   // Esc para cerrar overlay
   useEffect(() => {
-    function onKey(e) { if (e.key === "Escape") setSidebarOpen(false); }
+    function onKey(e) {
+      if (e.key === "Escape") setSidebarOpen(false);
+    }
     if (isSidebarOpen) document.addEventListener("keydown", onKey);
     return () => document.removeEventListener("keydown", onKey);
   }, [isSidebarOpen]);
@@ -29,7 +31,9 @@ export default function App() {
   // Cierra overlay si vuelves a escritorio
   useEffect(() => {
     const mq = window.matchMedia("(min-width: 769px)");
-    const handler = e => { if (e.matches) setSidebarOpen(false); };
+    const handler = (e) => {
+      if (e.matches) setSidebarOpen(false);
+    };
     mq.addEventListener("change", handler);
     return () => mq.removeEventListener("change", handler);
   }, []);
@@ -48,7 +52,7 @@ export default function App() {
       {/* Toggle móvil */}
       <button
         className="toggle-sections-btn"
-        onClick={() => setSidebarOpen(o => !o)}
+        onClick={() => setSidebarOpen((o) => !o)}
       >
         {isSidebarOpen ? "▲ Secciones" : "▼ Secciones"}
       </button>
@@ -58,12 +62,21 @@ export default function App() {
           sections={sectionsList}
           current={section}
           isOpen={isSidebarOpen}
-          onSelect={(sec) => { setSection(sec); setSidebarOpen(false); }}
+          onSelect={(sec) => {
+            setSection(sec);
+            setSidebarOpen(false);
+          }}
           onClose={() => setSidebarOpen(false)}
         />
 
-        <main className="main" onClick={() => isSidebarOpen && setSidebarOpen(false)}>
-          <h1>{section}</h1>
+        <main
+          className="main"
+          onClick={() => isSidebarOpen && setSidebarOpen(false)}
+        >
+          <header className="section-header">
+            <span className="section-dot" aria-hidden />
+            <h1 className="section-title">{section}</h1>
+          </header>
 
           {entry?.usesDays && (
             <DayTabs days={DAYS} current={day} onSelect={setDay} />
