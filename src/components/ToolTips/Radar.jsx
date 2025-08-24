@@ -3,7 +3,7 @@ import modalStyles from "../Modal/Modal.module.css";
 import radarInfo from "../../assets/tooltip/radar/radar-info.png";
 import radarHour from "../../assets/tooltip/radar/radar-counter.png";
 
-export default function RadarTooltip() {
+export default function Radar() {
   return (
     <>
       <h2>🎯 Objetivo</h2>

@@ -1,7 +1,4 @@
 import React from "react";
-// import Radar from '../components/Tooltips/Radar'
-// import LegendaryTask from '../components/Tooltips/LegendaryTasks'
-// import Shopping from '../components/Tooltips/Shopping'
 
 import Radar from "../components/Tooltips/Radar";
 import LegendaryTasks from "../components/Tooltips/LegendaryTasks";
