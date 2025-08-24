@@ -1,7 +1,7 @@
 import React from "react";
-import RadarTooltip from '../components/ToolTips/RadarToolTip'
-import LegendaryTask from '../components/ToolTips/LegendaryTasks'
-import Shopping from '../components/ToolTips/Shopping'
+import RadarTooltip from '../components/Tooltips/RadarToolTip'
+import LegendaryTask from '../components/Tooltips/LegendaryTasks'
+import Shopping from '../components/Tooltips/Shopping'
 
 import infoIcon from "../assets/tooltip/help.png";
 import dronChest from '../assets/tooltip/dron-chest.png'
