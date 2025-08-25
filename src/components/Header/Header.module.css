@@ -8,7 +8,7 @@
   position: sticky;
   top: 0;
   z-index: 2000;
-  isolation: isolate;          /* para que los pseudo no escapen */
+  isolation: isolate;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -16,26 +16,36 @@
 
   padding: 0.75rem 1.25rem;
   background:
-    linear-gradient( to right, rgba(30,39,46,.85), rgba(72,84,96,.78) );
+    linear-gradient(to right, rgba(30,39,46,.85), rgba(72,84,96,.78));
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 
   border-bottom: 1px solid rgba(255,255,255,0.08);
   box-shadow: 0 4px 18px rgba(0,0,0,0.22);
   color: #f1f2f6;
+
+  /* 🔒 Recorta lo que sobresalga para evitar scroll lateral */
+  overflow-x: clip;            /* navegadores modernos */
+  width: 100%;
+}
+
+/* Fallback si algún navegador no soporta clip */
+@supports not (overflow: clip) {
+  .header { overflow-x: hidden; }
 }
 
 /* cambio sutil día/noche */
 .header[data-theme="day"] {
   background:
-    linear-gradient( to right, rgba(28,63,43,.85), rgba(39,52,60,.78) );
+    linear-gradient(to right, rgba(28,63,43,.85), rgba(39,52,60,.78));
 }
 
-/* glow suave detrás del header */
+/* glow detrás del header: ya no sobresale a los lados */
 .header::before {
   content: "";
   position: absolute;
-  inset: -40% -10% auto -10%;
+  /* lateral 0 / 0 para no desbordar; sólo expandimos hacia arriba */
+  inset: -40% 0 auto 0;
   height: 140%;
   background: radial-gradient(60% 40% at 10% 0%,
     rgba(255, 167, 38, 0.18), transparent 60%);
@@ -87,17 +97,9 @@
   background: radial-gradient(120% 100% at 0% 0%, rgba(255,255,255,.12), transparent 60%);
   pointer-events: none;
 }
-.logo {
-  width: 100%; height: 100%;
-  object-fit: cover;
-  display: block;
-}
+.logo { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.titles {
-  display: flex; flex-direction: column;
-  gap: .3rem;
-  min-width: 0;
-}
+.titles { display: flex; flex-direction: column; gap: .3rem; min-width: 0; }
 .title {
   margin: 0;
   font-size: 1.25rem;
@@ -107,9 +109,7 @@
   text-shadow: 0 1px 0 rgba(0,0,0,.2);
   white-space: nowrap;
 }
-.metaRow {
-  display: flex; align-items: center; gap: .5rem;
-}
+.metaRow { display: flex; align-items: center; gap: .5rem; }
 .serverBadge {
   display: inline-flex;
   align-items: center;
@@ -125,13 +125,8 @@
 }
 
 /* ===== Reloj + menú ===== */
-.right {
-  display: flex;
-  align-items: center;
-  gap: .5rem;
-}
+.right { display: flex; align-items: center; gap: .5rem; }
 
-/* Chip fecha/hora */
 .clockChip {
   display: inline-flex;
   align-items: center;
@@ -147,10 +142,10 @@
 .dot  { opacity: .5; }
 .time { font-size: 1rem; font-weight: 800; }
 
-/* Botón menú (solo se muestra si el padre pasa onMenuClick) */
+/* Botón menú (visible sólo si el padre pasa onMenuClick) */
 .menuBtn {
   display: none;             /* visible en móvil */
-  width: 42px; height: 42px;
+  width: 46px; height: 46px; /* un pelín más grande para tacto */
   border-radius: 10px;
   border: 1px solid rgba(255,255,255,.14);
   background: rgba(255,255,255,.06);
@@ -164,13 +159,13 @@
   box-shadow: 0 0 0 3px rgba(33,150,243,.35);
 }
 
-/* icono hamburguesa */
+/* ☰ hamburguesa: más recta, separada y NARANJA */
 .menuIcon,
 .menuIcon::before,
 .menuIcon::after {
   display: block;
-  width: 18px; height: 2px;
-  background: #fff;
+  width: 22px; height: 2.5px;
+  background: #ffa826c1;
   border-radius: 2px;
   content: "";
 }
@@ -180,10 +175,11 @@
 }
 .menuIcon::before,
 .menuIcon::after {
-  position: relative;
+  position: absolute;
+  left: 0;
 }
-.menuIcon::before { top: -6px; }
-.menuIcon::after  { top:  6px; }
+.menuIcon::before { top: -7px; }
+.menuIcon::after  { top:  7px; }
 
 /* ===== Responsive ===== */
 @media (max-width: 840px) {

@@ -3,17 +3,17 @@ import styles from "./DailyTasks.module.css";
 
 // Tareas diarias
 const BASE_TASKS = [
-  { id: "sendTasks",      label: "Hacer tareas secretas",                                  emoji: "📨" },
-  { id: "loot5Tasks",     label: "Saquear 5 tareas",                                        emoji: "🏴‍☠️" },
-  { id: "help5Allies",    label: "Asistir tareas a 5 aliados",                              emoji: "🤝" },
-  { id: "join20Dooms",    label: "Unirse a 20 dooms",                                       emoji: "💥" },
-  { id: "sendTrucks",     label: "Mandar camiones",                                         emoji: "🚚" },
-  { id: "lootTrucks",     label: "Saquear camiones",                                        emoji: "🚚" },
-  { id: "hitCode",        label: "Pegarle a código",                                        emoji: "🧩" },
-  { id: "attack2Bases",   label: "Atacar dos bases con recursos (~7 golpes cada una)",      emoji: "⚔️" },
-  { id: "arenaLikes",     label: "Dar Me gusta en Arena (diamantes)",                       emoji: "👍" },
-  { id: "playArena",      label: "Jugar el Arena",                                          emoji: "🎮" },
-  { id: "donateAlliance", label: "Donar a la alianza",                                      emoji: "🏛️" },
+  { id: "sendTasks",      label: "Hacer tareas secretas",                                 emoji: "📨" },
+  { id: "loot5Tasks",     label: "Saquear 5 tareas",                                      emoji: "🏴‍☠️" },
+  { id: "help5Allies",    label: "Asistir tareas a 5 aliados",                             emoji: "🤝" },
+  { id: "join20Dooms",    label: "Unirse a 20 dooms",                                      emoji: "💥" },
+  { id: "sendTrucks",     label: "Mandar camiones",                                        emoji: "🚚" },
+  { id: "lootTrucks",     label: "Saquear camiones",                                       emoji: "🚚" },
+  { id: "hitCode",        label: "Pegarle a código",                                       emoji: "🧩" },
+  { id: "attack2Bases",   label: "Atacar dos bases con recursos (~7 golpes cada una)",     emoji: "⚔️" },
+  { id: "arenaLikes",     label: "Dar Me gusta en Arena (diamantes)",                      emoji: "👍" },
+  { id: "playArena",      label: "Jugar el Arena",                                         emoji: "🎮" },
+  { id: "donateAlliance", label: "Donar a la alianza",                                     emoji: "🏛️" },
 ];
 
 // Clave fija (sin fecha)
@@ -31,18 +31,14 @@ export default function DailyTasks() {
         const parsed = JSON.parse(raw);
         if (parsed && typeof parsed === "object") setChecked(parsed);
       }
-    } catch {
-      // ignorar errores de parseo/permiso
-    }
+    } catch {}
   }, []);
 
   // Guardar en storage cuando cambie
   useEffect(() => {
     try {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(checked));
-    } catch {
-      // ignorar
-    }
+    } catch {}
   }, [checked]);
 
   const total = BASE_TASKS.length;
@@ -83,23 +79,19 @@ export default function DailyTasks() {
         </div>
 
         <div className={styles.actions}>
-          <button className={styles.bulkBtn} onClick={markAll}>
-            Marcar todo
-          </button>
-          <button className={styles.bulkBtnGhost} onClick={clearAll}>
-            Reset del día
-          </button>
+          <button className={styles.btnPrimary} onClick={markAll}>Marcar todo</button>
+          <button className={styles.btnGhost} onClick={clearAll}>Reset del día</button>
         </div>
       </section>
 
-      {/* Checklist */}
+      {/* Checklist (estilo “Guía inicial”) */}
       <section>
-        <ul className={styles.list}>
+        <ul className={styles.checkList}>
           {BASE_TASKS.map((t) => {
             const isDone = !!checked[t.id];
             return (
-              <li key={t.id} className={`${styles.item} ${isDone ? styles.done : ""}`}>
-                <label className={styles.label}>
+              <li key={t.id} className={`${styles.checkItem} ${isDone ? styles.done : ""}`}>
+                <label className={styles.checkLabel}>
                   <input
                     type="checkbox"
                     checked={isDone}
@@ -120,7 +112,7 @@ export default function DailyTasks() {
                   </span>
 
                   <span className={styles.emoji} aria-hidden>{t.emoji}</span>
-                  <span className={styles.text}>{t.label}</span>
+                  <span className={styles.labelText}>{t.label}</span>
                 </label>
               </li>
             );
