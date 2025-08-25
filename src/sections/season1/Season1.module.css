@@ -9,6 +9,7 @@
 .title  { font-size: 1.35rem; font-weight: 800; }
 .subtitle { color: #555; font-size: .95rem; }
 
+/************** SheetsGrid *****************/
 /* ===== Grid de tarjetas (idiomas) ===== */
 .grid {
   display: grid;
@@ -45,7 +46,8 @@
   border-radius: 10px;
 }
 
-/* ===== Lightbox fullscreen (solo para Season1) ===== */
+/************** Lightbox *****************/
+/* =====  fullscreen ===== */
 .lightboxOverlay {
   position: fixed;
   inset: 0;
@@ -70,7 +72,7 @@
   width: auto;
   max-width: 100%;
   height: auto;
-  max-height: 88dvh;           /* GRANDE en desktop y móvil */
+  max-height: 88dvh;
   object-fit: contain;
   border-radius: 12px;
   box-shadow: 0 10px 28px rgba(0,0,0,.45);
@@ -113,7 +115,8 @@
   }
 }
 
-/* ===== Aliados (tus estilos, limpiados) ===== */
+/************** Allies.jsx *****************/
+/* ===== Aliados ===== */
 .allies { margin-bottom: 1rem; }
 .alliesTitle {
   font-size: 1.1rem;
@@ -192,7 +195,7 @@
   color: color-mix(in oklab, var(--accent) 70%, black);
   background: color-mix(in oklab, var(--accent) 8%, white);
 }
-
+/************** Manual.jsx *****************/
 /* ===== Manual T1 ===== */
 .manual {
   display: grid;
@@ -248,4 +251,217 @@
 }
 @media (max-width: 720px) {
   .twoCols { grid-template-columns: 1fr; }
+}
+
+/* Color de marca para reutilizar */
+.manual { --brandGreen:#48a261; }
+
+/* --- PUNTOS VERDES EN LISTAS --- */
+.klist {
+  list-style: none;
+  margin: 0;
+  padding-left: 0;
+  line-height: 1.6;
+}
+.klist li {
+  position: relative;
+  margin: .2rem 0;
+  padding-left: 1.15rem;
+}
+.klist li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: .85em;
+  width: .5rem;
+  height: .5rem;
+  border-radius: 50%;
+  background: var(--brandGreen);
+  box-shadow: 0 0 0 4px rgba(72,162,97,.15);
+  transform: translateY(-50%);
+}
+
+/* =========================
+   Manual – título principal
+   ========================= */
+.manualTitle {
+  position: relative;
+  font-size: 1.2rem;
+  font-weight: 800;
+  margin: 0 0 .25rem 0;
+  padding-bottom: .35rem;
+}
+.manualTitle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 120px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--brandGreen, #48a261), #ffa726);
+  opacity: .9;
+}
+
+/* =========================
+   Manual – subtítulos (h4)
+   ========================= */
+.kblockTitle {
+  position: relative;
+  margin: 0 0 .6rem 0;
+  font-size: 1rem;
+  font-weight: 800;
+  padding-bottom: .35rem;
+}
+.kblockTitle::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 3px;
+  width: 72px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--brandGreen, #48a261), #ffa726);
+  opacity: .9;
+}
+
+/* =======================================
+   Manual – recursos (imagen + mini caption)
+   ======================================= */
+/* Icono inline tras el nombre del recurso */
+.inlineIcon {
+  width: 22px;
+  height: 22px;
+  margin-left: .4rem;
+  vertical-align: -3px;           /* alinea mejor con el texto */
+  border-radius: 6px;
+  border: 1px solid #e9eef3;
+  background: #fff;
+  padding: 2px;
+  box-shadow: 0 1px 4px rgba(0,0,0,.06);
+}
+
+/* Asegurar que “Recursos nuevos” y “Edificios” tienen la misma altura */
+.twoCols { 
+  align-items: stretch;            /* estira ambas columnas */
+}
+.twoCols > .kblock {
+  display: flex;                   /* mantiene el interior normal */
+  flex-direction: column;
+  height: 100%;
+}
+
+/************** FlowCard.jsx *****************/
+/* --- BLOQUE DE FLUJO (ANCHO COMPLETO) --- */
+.flowCard {
+  border: 1px solid #ececec;
+  background: #fff;
+  border-radius: 14px;
+  padding: .95rem 1rem 1.05rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  background-color: #99d3b8bd;
+}
+
+/* Título con subrayado integrado */
+.flowTitle {
+  position: relative;
+  display: inline-block;
+  margin: 0 0 .6rem 0;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: .2px;
+  padding-bottom: .3rem;
+}
+
+/* contenedor de pasos */
+.flowSteps {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: .5rem .7rem;
+}
+
+/* pastilla base */
+.step {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .45rem .75rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in oklab, var(--brandGreen) 35%, white);
+  background: color-mix(in oklab, var(--brandGreen) 10%, white);
+  color: #1f2937;
+  font-weight: 800;
+  font-size: .95rem;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0,0,0,.04);
+}
+
+/* Agrupa cada step + su conector para que el gap sea consistente */
+.stepGroup {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+}
+
+/* Conector tipo “línea + punta” */
+.connector {
+  position: relative;
+  flex: 0 0 28px;             /* ancho fijo del conector */
+  height: 2px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #ffa726, var(--brandGreen));
+  opacity: .95;
+  align-self: center;
+}
+.connector::after {
+  content: "";
+  position: absolute;
+  right: -4px;                /* saca un pelín la punta */
+  top: 50%;
+  transform: translateY(-50%);
+  border-left: 7px solid var(--brandGreen);
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+}
+
+/* Si quieres que el conector sea más corto en móvil */
+@media (max-width: 720px) {
+  .connector { flex-basis: 20px; }
+}
+
+
+/* icono (emoji o imagen) */
+.stepIcon { line-height: 1; }
+.stepIconImg {
+  width: 20px; height: 20px;
+  display: block;
+  object-fit: contain;
+  filter: drop-shadow(0 1px 1px rgba(0,0,0,.08));
+}
+
+/* variantes */
+.base { /* Zombis */
+  border-color: #d1d5db;
+  background: #f3f4f6;
+  color: #374151;
+}
+.mid { /* Cristales, Granja, Proteínas */
+  border-color: color-mix(in oklab, var(--brandGreen) 36%, white);
+  background: color-mix(in oklab, var(--brandGreen) 12%, white);
+}
+.accent { /* Instituto del Virus */
+  border-color: #8ecae6;
+  background: #eaf6fd;
+}
+.final { /* Resistencia */
+  border-color: var(--brandGreen);
+  background: color-mix(in oklab, var(--brandGreen) 18%, white);
+  color: #0f5132;
+}
+
+/* responsive */
+@media (max-width: 720px) {
+  .flowSteps { justify-content: center; }
 }

@@ -1,60 +1,197 @@
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0.75rem 1.5rem;
-  background: linear-gradient(90deg, #1e272e 0%, #485460 100%);
-  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-  color: #f1f2f6;
-  border-bottom: 4px solid #ffa726;
+:root {
+  --accent: #ffa726;          /* naranja de marca */
+  --brandGreen: #48a261;      /* verde app */
 }
 
+/* Header “glass” + sticky */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 2000;
+  isolation: isolate;          /* para que los pseudo no escapen */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+
+  padding: 0.75rem 1.25rem;
+  background:
+    linear-gradient( to right, rgba(30,39,46,.85), rgba(72,84,96,.78) );
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.22);
+  color: #f1f2f6;
+}
+
+/* cambio sutil día/noche */
+.header[data-theme="day"] {
+  background:
+    linear-gradient( to right, rgba(28,63,43,.85), rgba(39,52,60,.78) );
+}
+
+/* glow suave detrás del header */
+.header::before {
+  content: "";
+  position: absolute;
+  inset: -40% -10% auto -10%;
+  height: 140%;
+  background: radial-gradient(60% 40% at 10% 0%,
+    rgba(255, 167, 38, 0.18), transparent 60%);
+  z-index: -1;
+}
+
+/* barra inferior animada */
+.accentBar {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 3px;
+  background: linear-gradient(90deg,
+    var(--accent),
+    #ffcc80,
+    var(--brandGreen),
+    #7bdcb5,
+    var(--accent)
+  );
+  background-size: 200% 100%;
+  animation: slideAccent 6s linear infinite;
+  opacity: .9;
+}
+@keyframes slideAccent {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 200% 50%; }
+}
+
+/* ===== Brand ===== */
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: .85rem;
+  min-width: 0;
 }
 
+.logoWrap {
+  position: relative;
+  width: 46px; height: 46px;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 18px rgba(0,0,0,.35), inset 0 0 0 1px rgba(255,255,255,.08);
+}
+.logoWrap::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(120% 100% at 0% 0%, rgba(255,255,255,.12), transparent 60%);
+  pointer-events: none;
+}
 .logo {
-  width: 48px;
-  height: 48px;
-  object-fit: contain;
-  border-radius: 8px;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
 }
 
 .titles {
-  display: flex;
-  flex-direction: column;
-  line-height: 1;
-  gap: 0.5rem; 
+  display: flex; flex-direction: column;
+  gap: .3rem;
+  min-width: 0;
 }
-
 .title {
-  font-size: 1.35rem;
   margin: 0;
+  font-size: 1.25rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: .2px;
+  text-shadow: 0 1px 0 rgba(0,0,0,.2);
+  white-space: nowrap;
+}
+.metaRow {
+  display: flex; align-items: center; gap: .5rem;
+}
+.serverBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .28rem .5rem;
+  border-radius: 999px;
+  font-size: .85rem;
   font-weight: 700;
+  color: #0f172a;
+  background: #dbdbdb4f;
+  border: 1px solid rgba(16,24,40,.06);
+  box-shadow: 0 2px 10px rgba(0,0,0,.1);
 }
 
-.subtitle {
-  font-size: 0.9rem;
-  margin: 0;
-  opacity: 0.8;
+/* ===== Reloj + menú ===== */
+.right {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
 }
 
-.clock {
-  text-align: right;
-  font-family: 'Courier New', monospace;
+/* Chip fecha/hora */
+.clockChip {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  padding: .35rem .6rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,.08);
+  border: 1px solid rgba(255,255,255,.12);
+  box-shadow: inset 0 0 0 1px rgba(255,255,255,.04);
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+}
+.date { font-size: .88rem; opacity: .9; }
+.dot  { opacity: .5; }
+.time { font-size: 1rem; font-weight: 800; }
+
+/* Botón menú (solo se muestra si el padre pasa onMenuClick) */
+.menuBtn {
+  display: none;             /* visible en móvil */
+  width: 42px; height: 42px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.14);
+  background: rgba(255,255,255,.06);
+  cursor: pointer;
+  transition: transform .08s ease, background .15s ease;
+}
+.menuBtn:hover { background: rgba(255,255,255,.10); }
+.menuBtn:active { transform: translateY(1px); }
+.menuBtn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(33,150,243,.35);
 }
 
-.date {
+/* icono hamburguesa */
+.menuIcon,
+.menuIcon::before,
+.menuIcon::after {
   display: block;
-  font-size: 0.9rem;
-  opacity: 0.85;
+  width: 18px; height: 2px;
+  background: #fff;
+  border-radius: 2px;
+  content: "";
+}
+.menuIcon {
+  margin: 0 auto;
+  position: relative;
+}
+.menuIcon::before,
+.menuIcon::after {
+  position: relative;
+}
+.menuIcon::before { top: -6px; }
+.menuIcon::after  { top:  6px; }
+
+/* ===== Responsive ===== */
+@media (max-width: 840px) {
+  .title { font-size: 1.1rem; }
+  .serverBadge { font-size: .82rem; }
 }
 
-.time {
-  display: block;
-  font-size: 1.2rem;
-  font-weight: 600;
+@media (max-width: 680px) {
+  .clockChip { display: none; }
+  .menuBtn { display: inline-block; }
 }

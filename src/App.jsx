@@ -47,15 +47,7 @@ export default function App() {
 
   return (
     <div className="layout">
-      <Header />
-
-      {/* Toggle móvil */}
-      <button
-        className="toggle-sections-btn"
-        onClick={() => setSidebarOpen((o) => !o)}
-      >
-        {isSidebarOpen ? "▲ Secciones" : "▼ Secciones"}
-      </button>
+      <Header onMenuClick={() => setSidebarOpen((o) => !o)} />
 
       <div className="content">
         <Sidebar

@@ -1,4 +1,3 @@
-// src/sections/index.jsx
 import React from "react";
 
 // Secciones reales
@@ -7,6 +6,7 @@ import { ALLIANCE_DUEL_TASKS } from "./alliance-duel/tasks";
 import Marshall from "./marshall/Marshall";
 import HQRequirements from "./hq-requirements/HQRequirements";
 import Season1 from "./season1/Season1";
+import DailyTasks from "./daily-tasks/DailyTasks";
 
 // Registro central de secciones
 export const SECTION_REGISTRY = {
@@ -20,6 +20,11 @@ export const SECTION_REGISTRY = {
     }),
   },
 
+  "Temporada 1": {
+    usesDays: false,
+    Component: Season1,
+  },
+
   Marshall: {
     usesDays: false,
     Component: Marshall,
@@ -30,16 +35,13 @@ export const SECTION_REGISTRY = {
     Component: HQRequirements,
   },
 
-  "Temporada 1": {
+  "Tareas diarias": {
     usesDays: false,
-    Component: Season1,
+    Component: DailyTasks,
   },
 
-  // El resto:
-  // "Carrera de armas": { usesDays: true/false, Component: X, getProps: ({day}) => ({ ... }) }
   /*
-    "Tareas Diarias",
-    "Carrera de armas",
+    "Carrera de armas": { usesDays: true/false, Component: X, getProps: ({day}) => ({ ... }) }
     "Duelo de servidor",
     "Asedio zombie",
     "Héroes",

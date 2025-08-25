@@ -1,0 +1,170 @@
+/* Contenedor general */
+.wrapper {
+  display: grid;
+  gap: 1rem;
+}
+
+/* ===== Hero / Progreso ===== */
+.hero {
+  border: 1px solid #ececec;
+  background: #fff;
+  border-radius: 14px;
+  padding: 1rem 1.1rem;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+}
+
+.heroTop {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .75rem;
+  margin-bottom: .5rem;
+}
+
+.title {
+  margin: 0;
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+
+.today {
+  font-size: .9rem;
+  color: #666;
+  padding: .2rem .5rem;
+  border-radius: 8px;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+}
+
+.progressRow {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: .6rem .75rem;
+  align-items: center;
+}
+
+.progressText { color: #374151; font-size: .95rem; }
+
+.progressBar {
+  position: relative;
+  height: 10px;
+  border-radius: 999px;
+  background: #eef2f7;
+  overflow: hidden;
+  box-shadow: inset 0 1px 2px rgba(0,0,0,.06);
+}
+.progressFill {
+  position: absolute;
+  inset: 0 0 0 0;
+  width: 0%;
+  background: linear-gradient(90deg, #ffa726, #48a261);
+  box-shadow: 0 2px 10px rgba(255,152,0,.35);
+  transition: width .25s ease;
+}
+.percent { font-weight: 800; color: #374151; }
+
+.actions {
+  margin-top: .75rem;
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+}
+
+.bulkBtn, .bulkBtnGhost {
+  padding: .5rem .8rem;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.bulkBtn {
+  background: linear-gradient(180deg, #ffa726, #ff9800);
+  color: #fff;
+  border-color: #ff9800;
+  box-shadow: 0 6px 14px rgba(255,152,0,.28);
+}
+.bulkBtn:hover { filter: brightness(1.02); }
+.bulkBtnGhost {
+  background: #fff;
+  color: #374151;
+  border-color: #e5e7eb;
+}
+.bulkBtnGhost:hover { background: #f9fafb; }
+
+/* ===== Lista ===== */
+.list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: .6rem;
+}
+
+.item {
+  border: 1px solid #ececec;
+  background: #fff;
+  border-radius: 14px;
+  padding: .6rem .7rem;
+  box-shadow: 0 4px 14px rgba(0,0,0,.04);
+  transition: transform .08s ease, box-shadow .15s ease, border-color .15s ease;
+}
+.item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 18px rgba(0,0,0,.06);
+  border-color: #e2e8f0;
+}
+
+.label {
+  display: grid;
+  grid-template-columns: 28px 28px 1fr;
+  align-items: center;
+  gap: .65rem;
+}
+
+/* Checkbox accesible (input oculto + caja visible) */
+.checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.fakeBox {
+  width: 22px;
+  height: 22px;
+  border-radius: 5px;
+  border: 2px solid #cfd8e3;
+  display: grid;
+  place-items: center;
+  transition: all .15s ease;
+  background: #fff;
+}
+.checkIcon {
+  width: 16px;
+  height: 16px;
+  stroke: white;
+  opacity: 0;
+  transition: opacity .1s ease;
+}
+
+/* Estado done */
+.done .fakeBox {
+  background: #48a261;
+  border-color: #3f8f56;
+  box-shadow: 0 0 0 4px rgba(72,162,97,.15);
+}
+.done .checkIcon { opacity: 1; }
+
+.emoji { font-size: 1.2rem; line-height: 1; }
+.text  { color: #1f2937; }
+
+/* Foco visible al navegar con teclado */
+.item:has(.checkbox:focus-visible) {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(33,150,243,.28);
+}
+
+/* Responsive: dos columnas a partir de 820px */
+@media (min-width: 820px) {
+  .list { grid-template-columns: 1fr 1fr; }
+}
