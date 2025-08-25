@@ -7,6 +7,7 @@ import Marshall from "./marshall/Marshall";
 import HQRequirements from "./hq-requirements/HQRequirements";
 import Season1 from "./season1/Season1";
 import DailyTasks from "./daily-tasks/DailyTasks";
+import InitialGuide from "./initial-guide/InitialGuide";
 
 // Registro central de secciones
 export const SECTION_REGISTRY = {
@@ -23,6 +24,11 @@ export const SECTION_REGISTRY = {
   "Temporada 1": {
     usesDays: false,
     Component: Season1,
+  },
+
+  "Guía inicial": {
+    usesDays: false,
+    Component: InitialGuide,
   },
 
   Marshall: {

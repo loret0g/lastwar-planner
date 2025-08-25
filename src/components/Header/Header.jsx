@@ -66,7 +66,7 @@ export default function Header({ onMenuClick }) {
       </div>
 
       {/* barra de acento animada */}
-      <div className={styles.accentBar} aria-hidden />
+      <span className={styles.accentBar} aria-hidden />
     </header>
   );
 }

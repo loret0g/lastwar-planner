@@ -1,7 +1,6 @@
 :root {
-  --accent: #ffa726;        /* naranja de marca */
-  --brandGreen: #48a261;    /* verde app */
-  --accent-height: 3px;     /* alto de la barra */
+  --accent: #ffa726;          /* naranja de marca */
+  --brandGreen: #48a261;      /* verde app */
 }
 
 /* Header “glass” + sticky */
@@ -9,51 +8,48 @@
   position: sticky;
   top: 0;
   z-index: 2000;
-  isolation: isolate;
+  isolation: isolate;          /* para que los pseudo no escapen */
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
 
   padding: 0.75rem 1.25rem;
-  background: linear-gradient(to right, rgba(30,39,46,.85), rgba(72,84,96,.78));
+  background:
+    linear-gradient( to right, rgba(30,39,46,.85), rgba(72,84,96,.78) );
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
 
-  /* ¡Quitamos el borde inferior para que no cree el “salto” de 1px! */
-  border-bottom: none;
-
-  box-shadow: 0 4px 18px rgba(0,0,0,.22);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 4px 18px rgba(0,0,0,0.22);
   color: #f1f2f6;
-
-  /* para evitar scroll lateral por brillos/sombras que sobresalen */
-  overflow: clip;
 }
 
-/* tema diurno opcional (igual que tenías) */
+/* cambio sutil día/noche */
 .header[data-theme="day"] {
-  background: linear-gradient(to right, rgba(28,63,43,.85), rgba(39,52,60,.78));
+  background:
+    linear-gradient( to right, rgba(28,63,43,.85), rgba(39,52,60,.78) );
 }
 
-/* glow suave detrás del header (igual que tenías) */
+/* glow suave detrás del header */
 .header::before {
   content: "";
   position: absolute;
   inset: -40% -10% auto -10%;
   height: 140%;
-  background: radial-gradient(60% 40% at 10% 0%, rgba(255,167,38,.18), transparent 60%);
+  background: radial-gradient(60% 40% at 10% 0%,
+    rgba(255, 167, 38, 0.18), transparent 60%);
   z-index: -1;
 }
 
-/* Barra inferior animada: ahora pegada al borde con bottom: 0 */
+/* barra inferior animada */
 .accentBar {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 0;                         /* <- clave: ya no -1px */
-  height: var(--accent-height);
-  background: linear-gradient(
-    90deg,
+  bottom: -1px;
+  height: 3px;
+  background: linear-gradient(90deg,
     var(--accent),
     #ffcc80,
     var(--brandGreen),
@@ -63,15 +59,11 @@
   background-size: 200% 100%;
   animation: slideAccent 6s linear infinite;
   opacity: .9;
-  pointer-events: none;              /* no captura clicks */
-  will-change: background-position;  /* más suave */
 }
-
 @keyframes slideAccent {
   0%   { background-position: 0% 50%; }
   100% { background-position: 200% 50%; }
 }
-
 
 /* ===== Brand ===== */
 .brand {
