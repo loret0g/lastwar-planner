@@ -23,6 +23,8 @@
   border-bottom: 1px solid rgba(255,255,255,0.08);
   box-shadow: 0 4px 18px rgba(0,0,0,0.22);
   color: #f1f2f6;
+
+  overflow: clip;
 }
 
 /* cambio sutil día/noche */
