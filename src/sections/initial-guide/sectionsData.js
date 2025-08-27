@@ -17,7 +17,7 @@ export const SECTIONS = [
     title: "Prioridad al primer escuadrón",
     items: [
       { text: "Hay que tener el primer escuadrón fuerte, será con el que ataques y defiendas tu base." },
-      { text: "Céntrate en mejorar el primer escuadrón, no es conveniente ir subiendo a todos los héroes.." },
+      { text: "Céntrate en mejorar el primer escuadrón, no es conveniente ir subiendo a todos los héroes." },
       { text: "Prioriza los héroes UR (dorados)." },
       { text: "Invierte armamento/chips de dron/fragmentos primero en ese equipo." },
       { text: "Poco a poco deberías tener un escuadrón de tipo tanque, otro aéreo y otro de misiles. (paciencia)" }
