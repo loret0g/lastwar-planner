@@ -1,0 +1,201 @@
+:root {
+  --typeMarshall: #ef4444;
+  --typeZombie: #ffa726;
+  --typeSiege: #3b82f6;
+  --typeDesertStorm: #8b5cf6;
+  --typeOther: #10b981;
+
+}
+
+.wrapper {
+  display: grid;
+  gap: .9rem;
+}
+
+/* Encabezado de semana */
+.weekHeader {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .75rem;
+  padding: .6rem .8rem;
+  border: 1px solid #ececec;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+}
+
+/** Huso horario **/
+.rightControls {
+  display: flex;
+  align-items: center;
+  gap: .5rem;
+}
+
+.tzControl {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .9rem;
+  color: #475569;
+}
+
+.tzSelect {
+  font-size: .9rem;
+  padding: .25rem .45rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.weekTitle {
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: .2px;
+  color: #1f2937;
+}
+.weekRange {
+  font-size: .95rem;
+  color: #556;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  padding: .2rem .5rem;
+  border-radius: 8px;
+}
+
+/* Calendario: 7 columnas en desktop, 1 en móvil */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(130px, 1fr));
+  gap: .6rem;
+}
+@media (max-width: 900px) {
+  .calendar {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Columna/día */
+.dayCol {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: .5rem;
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/* Cabecera del día */
+.dayHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .5rem;
+  padding: .55rem .7rem;
+  border: 1px solid #ececec;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 4px 12px rgba(0,0,0,.04);
+}
+.today {
+  outline: 3px solid rgba(255,152,0,.25);
+  box-shadow: 0 8px 18px rgba(255,152,0,.08);
+}
+.dayName { font-weight: 800; color: #1f2937; }
+.dayDate {
+  font-size: .9rem;
+  color: #475569;
+  background: #f3f4f6;
+  border: 1px solid #e5e7eb;
+  padding: .15rem .45rem;
+  border-radius: 8px;
+}
+
+/* Lista de eventos de ese día */
+.eventList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: .5rem;
+}
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #94a3b8;
+  padding: .7rem;
+  border: 1px dashed #e2e8f0;
+  border-radius: 10px;
+  background: #fff;
+}
+
+/* Tarjeta de evento */
+.eventCard {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: .5rem .6rem;
+  padding: .55rem .7rem;
+  border-radius: 12px;
+  border: 1px solid #ececec;
+  background: #fff;
+  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  position: relative;
+}
+
+/* Franja de color a la izquierda (por tipo) */
+.eventCard::before {
+  content: "";
+  position: absolute;
+  left: 0; top: 0; bottom: 0;
+  width: 6px;
+  border-radius: 12px 0 0 12px;
+  /* background: #cbd5e1; */
+}
+
+/* Tiempo y título */
+.eventTime {
+  font-weight: 800;
+  color: #0f172a;
+  font-size: .95rem;
+}
+.eventTitle {
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* Variantes por tipo (usa la franja + suaves fondos) */
+.typeMarshall.eventCard::before { background: var(--typeMarshall); }
+
+.typeSiege.eventCard::before { background: var(--typeSiege); }
+
+.typeZombie.eventCard::before { background: var(--typeZombie); }
+
+.typeDesertStorm.eventCard::before { background: var(--typeDesertStorm); }
+
+.typeOther.eventCard::before { background: var(--typeOther); }
+
+/* Leyenda */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem 1rem;
+  align-items: center;
+  color: #475569;
+  font-size: .9rem;
+  margin-top: .25rem;
+}
+.dot {
+  display: inline-block;
+  width: 14px; height: 14px;
+  border-radius: 50%;
+  margin-right: .35rem;
+  vertical-align: -2px;
+  background: #cbd5e1;
+}
+.dot.typeZombie { background: var(--typeZombie); }
+.dot.typeSiege    { background: var(--typeSiege); }
+.dot.typeMarshall     { background: var(--typeMarshall); }
+.dot.typeDesertStorm     { background: var(--typeDesertStorm); }
+.dot.typeOther    { background: var(--typeOther); }

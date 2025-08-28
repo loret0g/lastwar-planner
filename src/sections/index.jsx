@@ -8,6 +8,7 @@ import HQRequirements from "./hq-requirements/HQRequirements";
 import Season1 from "./season1/Season1";
 import DailyTasks from "./daily-tasks/DailyTasks";
 import InitialGuide from "./initial-guide/InitialGuide";
+import Events from "./events/Events";
 
 // Registro central de secciones
 export const SECTION_REGISTRY = {
@@ -44,6 +45,11 @@ export const SECTION_REGISTRY = {
   "Tareas diarias": {
     usesDays: false,
     Component: DailyTasks,
+  },
+
+  "Eventos de Alianza": {
+    usesDays: false,
+    Component: Events,
   },
 
   /*

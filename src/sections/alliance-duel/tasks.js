@@ -42,7 +42,7 @@ export const ALLIANCE_DUEL_TASKS = {
   Miércoles: {
     do: [
       { text: 'Realizar las tareas de radar (cada 6 horas)', tooltipKey: null },
-      { text: 'Investigar donde se utilicen "medallas de honor" --> “Duelo de alianzas”, “Camión interurbano”, “Fuerzas especiales”', tooltipKey: null },
+      { text: 'Investigar donde se utilicen "medallas de honor"', tooltipKey: 'honorMedals' },
       { text: 'Utilizar aceleradores de investigación', tooltipKey: null },
       { text: 'Abrir cofres de componentes de dron y juntarlos', tooltipKey: null }
     ],
