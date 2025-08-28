@@ -21,8 +21,9 @@
   border-radius: 0 8px 8px 0;
 }
 
-/* Los botones del menú */
-.sidebar button {
+/* Los enlaces del menú */
+.sidebar a {
+  display: block;
   width: 100%;
   padding: 0.7rem 0.85rem;
   border-radius: 10px;
@@ -30,17 +31,18 @@
   background: #fafafa;
   color: #1e272e;
   font: inherit;
+  text-decoration: none;
   cursor: pointer;
   transition: background .15s ease, border-color .15s ease, transform .06s ease, box-shadow .15s ease;
   margin: 0.5rem 0;
 }
 
-.sidebar button:hover {
+.sidebar a:hover {
   background: #f3f3f3;
   border-color: #e0e0e0;
 }
 
-.sidebar button:active { transform: translateY(1px); }
+.sidebar a:active { transform: translateY(1px); }
 
 .active {
   background: linear-gradient(180deg, #ffa726, #ff9800);
@@ -84,7 +86,8 @@
     width: min(92%, 360px);
   }
 
-  .mobileOpen button {
+  .mobileOpen a {
+    display: block;
     width: 100%;
     padding: 1rem;
     border: none;
@@ -93,6 +96,7 @@
     color: #1e272e;
     font-size: 1.05rem;
     text-align: center;
+    text-decoration: none;
     box-shadow: 0 6px 16px rgba(0,0,0,0.18);
   }
 
