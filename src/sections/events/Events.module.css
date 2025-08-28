@@ -4,7 +4,6 @@
   --typeSiege: #3b82f6;
   --typeDesertStorm: #8b5cf6;
   --typeOther: #10b981;
-
 }
 
 .wrapper {
@@ -23,13 +22,26 @@
   border-radius: 12px;
   background: #fff;
   box-shadow: 0 6px 18px rgba(0,0,0,.06);
+
+  /* para que los hijos puedan encoger y no rompan el contenedor */
+  min-width: 0;
+  flex-wrap: wrap;
 }
 
-/** Huso horario **/
+.weekTitle {
+  font-weight: 800;
+  font-size: 1.05rem;
+  letter-spacing: .2px;
+  color: #1f2937;
+  min-width: 0;
+}
+
 .rightControls {
   display: flex;
   align-items: center;
   gap: .5rem;
+  min-width: 0;
+  flex-wrap: wrap; /* permite saltar de línea si no cabe */
 }
 
 .tzControl {
@@ -38,6 +50,8 @@
   gap: .4rem;
   font-size: .9rem;
   color: #475569;
+  min-width: 0;
+  flex: 1 1 220px; /* crece y puede ir a otra línea */
 }
 
 .tzSelect {
@@ -46,14 +60,9 @@
   border: 1px solid #e5e7eb;
   border-radius: 8px;
   background: #fff;
+  max-width: 100%;
 }
 
-.weekTitle {
-  font-weight: 800;
-  font-size: 1.05rem;
-  letter-spacing: .2px;
-  color: #1f2937;
-}
 .weekRange {
   font-size: .95rem;
   color: #556;
@@ -63,12 +72,32 @@
   border-radius: 8px;
 }
 
-/* Calendario: 7 columnas en desktop, 1 en móvil */
+/* En pantallas pequeñas, pone el título arriba y los controles debajo en bloque */
+@media (max-width: 640px) {
+  .weekHeader {
+    flex-direction: column;
+    align-items: stretch;
+    gap: .6rem;
+  }
+  .rightControls {
+    justify-content: space-between;
+  }
+  .weekRange {
+    margin-left: auto; /* se pega a la derecha */
+  }
+}
+
+/* Calendario:
+   - Escritorio: 7 columnas exactas
+   - Móvil: 1 columna
+*/
 .calendar {
   display: grid;
   grid-template-columns: repeat(7, minmax(130px, 1fr));
   gap: .6rem;
+  min-width: 0;
 }
+
 @media (max-width: 900px) {
   .calendar {
     grid-template-columns: 1fr;
@@ -151,7 +180,6 @@
   left: 0; top: 0; bottom: 0;
   width: 6px;
   border-radius: 12px 0 0 12px;
-  /* background: #cbd5e1; */
 }
 
 /* Tiempo y título */
@@ -165,16 +193,12 @@
   font-weight: 600;
 }
 
-/* Variantes por tipo (usa la franja + suaves fondos) */
-.typeMarshall.eventCard::before { background: var(--typeMarshall); }
-
-.typeSiege.eventCard::before { background: var(--typeSiege); }
-
-.typeZombie.eventCard::before { background: var(--typeZombie); }
-
-.typeDesertStorm.eventCard::before { background: var(--typeDesertStorm); }
-
-.typeOther.eventCard::before { background: var(--typeOther); }
+/* Variantes por tipo (franja izquierda) */
+.eventCard.typeMarshall::before { background: var(--typeMarshall); }
+.eventCard.typeSiege::before { background: var(--typeSiege); }
+.eventCard.typeZombie::before { background: var(--typeZombie); }
+.eventCard.typeDesertStorm::before { background: var(--typeDesertStorm); }
+.eventCard.typeOther::before { background: var(--typeOther); }
 
 /* Leyenda */
 .legend {
@@ -195,7 +219,7 @@
   background: #cbd5e1;
 }
 .dot.typeZombie { background: var(--typeZombie); }
-.dot.typeSiege    { background: var(--typeSiege); }
-.dot.typeMarshall     { background: var(--typeMarshall); }
-.dot.typeDesertStorm     { background: var(--typeDesertStorm); }
-.dot.typeOther    { background: var(--typeOther); }
+.dot.typeSiege { background: var(--typeSiege); }
+.dot.typeMarshall { background: var(--typeMarshall); }
+.dot.typeDesertStorm { background: var(--typeDesertStorm); }
+.dot.typeOther { background: var(--typeOther); }

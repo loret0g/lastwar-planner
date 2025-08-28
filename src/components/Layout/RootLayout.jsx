@@ -27,10 +27,17 @@ export default function RootLayout() {
     return () => mq.removeEventListener("change", handler);
   }, []);
 
+  useEffect(() => {
+    document.body.style.overflow = isSidebarOpen ? "hidden" : "";
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isSidebarOpen]);
+
   return (
     <div className={styles.app}>
       {/* Pasamos onMenuClick para que el Header muestre el botón hamburguesa */}
-      <Header onMenuClick={() => setSidebarOpen(o => !o)} />
+      <Header onMenuClick={() => setSidebarOpen((o) => !o)} />
 
       <div className={styles.body}>
         {/* Pasamos isOpen y onClose al Sidebar (overlay móvil) */}

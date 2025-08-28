@@ -181,7 +181,7 @@ export default function Events() {
         <div className={styles.weekTitle}>Calendario semanal</div>
         <div className={styles.rightControls}>
           <label className={styles.tzControl}>
-            Zona:
+            {/* Zona: */}
             <select
               className={styles.tzSelect}
               value={tz}
