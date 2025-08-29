@@ -4,7 +4,7 @@ export const SECTIONS = [
     title: "Subir Cuartel general y Barracas",
     items: [
       { text: "El Cuartel General aumenta tu poder y permite a tus héroes conseguir un nivel más alto." },
-      { text: "Adelántate a los requisitos que piden para subir el siguiente nivel del cuartel general (mira la guía → “Requisitos CG”; más adelante lo enlazaremos)." },
+      { text: "Adelántate a los requisitos que piden para subir el siguiente nivel del cuartel general" },
       {
         text: "Las Barracas, dependiendo de su nivel, te permitirá crear soldados más fuertes.",
         sub: ["Barraca nivel 24 – T8", "Barraca nivel 27 – T9", "Barraca nivel 30 – T10"]
