@@ -116,7 +116,6 @@
 }
 
 /************** Allies.jsx *****************/
-/* ===== Aliados ===== */
 .allies { margin-bottom: 1rem; }
 .alliesTitle {
   font-size: 1.1rem;
@@ -464,4 +463,24 @@
 /* responsive */
 @media (max-width: 720px) {
   .flowSteps { justify-content: center; }
+}
+
+.group {
+  display: grid;
+  gap: .6rem;
+  margin-top: 1rem;
+}
+
+.groupTitle {
+  font-size: 1.05rem;
+  font-weight: 800;
+  letter-spacing: .2px;
+  color: #1f2937;
+  margin: 0;
+}
+
+.groupSubtitle {
+  margin: 0;
+  color: #556;
+  font-size: .95rem;
 }
