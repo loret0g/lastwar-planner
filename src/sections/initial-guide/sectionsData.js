@@ -130,8 +130,7 @@ export const SECTIONS = [
     ctas: [
       { kind: "modal", modalKey: "reports", label: "Cómo leer los reportes" }
     ]
-  }
-  ,
+  },
   {
     key: "vip",
     title: "Pase VIP con diamantes",
@@ -140,5 +139,28 @@ export const SECTIONS = [
       { text: "En base, botón VIP (arriba izquierda) → 30 días por 10.000. Renuévalo antes de que acabe: los días se suman." },
       { text: "Da bonificaciones globales muy útiles (reducción de tiempo, más recursos, más daño...)" }
     ]
-  }
+  },
+  {
+    key: "shield",
+    title: "Poner escudo",
+    items: [
+      { text: "Activa el escudo el viernes." },
+      { text: "Comprueba la duración del escudo y renueva antes de que expire." }
+    ],
+    ctas: [
+      { kind: "guide", guideKey: "shield", label: "Ver guía de escudo" }
+    ]
+  },
+  {
+    key: "attack",
+    title: "Atacar enemigo",
+    items: [
+      { text: "Antes de atacar o defender a un compañero, revisa el nivel del objetivo y su potencia. Evita pérdidas innecesarias." },
+      { text: "Usa minas para acercarte sin activar el radar enemigo hasta el último momento." }
+    ],
+    ctas: [
+      { kind: "guide", guideKey: "attack", label: "Ver guía para atacar" }
+    ]
+  },
+
 ];

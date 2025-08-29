@@ -10,22 +10,18 @@ import accStyles from "../../components/Accordion/Accordion.module.css";
 // Estilos propios de la guía inicial (galerías, etc.)
 import igStyles from "./InitialGuide.module.css";
 
-// Imagen de colocación (modal "placement")
-import colocationHeros from "../../assets/initial-guide/colocation-heros.png";
 
-// Imágenes para el modal "wall"
+import colocationHeros from "../../assets/initial-guide/colocation-heros.png";
 import wallOff1 from "../../assets/guides/attack/basic-tips/wall-off-1.png";
 import wallOff2 from "../../assets/guides/attack/basic-tips/wall-off-2.png";
-
 import reports1 from "../../assets/initial-guide/reports1.png";
 import reports2 from "../../assets/initial-guide/reports2.png";
 
-
-// Reutiliza guías del registry (si usas CTAs kind:"guide")
+// Reutiliza guías del registry (CTAs kind:"guide")
 import { guides } from "../../components/Guides/GuideRegistry";
 
 export default function InitialGuide() {
-  const [openModal, setOpenModal] = useState(null);       // modales locales
+  const [openModal, setOpenModal] = useState(null); // modales locales
   const [openGuideKey, setOpenGuideKey] = useState(null); // guías del registry
 
   const buildActions = (sec) => {
@@ -86,19 +82,13 @@ export default function InitialGuide() {
         {GuideComp && <GuideComp />}
       </Modal>
 
-      {/* Modal local (placement con imagen, wall con galería, etc.) */}
+      {/* Modal local */}
       <Modal isOpen={!!openModal} onClose={() => setOpenModal(null)}>
         {openModal === "placement" && (
           <div style={{ textAlign: "center" }}>
             <img
               src={colocationHeros}
               alt="Ejemplo de colocación de héroes en el escuadrón"
-              style={{
-                maxWidth: "100%",
-                height: "auto",
-                borderRadius: "12px",
-                boxShadow: "0 8px 24px rgba(0,0,0,.15)"
-              }}
             />
           </div>
         )}
@@ -107,10 +97,10 @@ export default function InitialGuide() {
           <div>
             <h3 style={{ marginTop: 0 }}>Quitar tropas de la muralla</h3>
             <p style={{ marginTop: ".25rem" }}>
-              Solo actívalas si te ataca un rival claramente más débil; desactívalas después.
+              Solo actívalas si te ataca un rival claramente más débil;
+              desactívalas después.
             </p>
 
-            {/* Galería de apoyo: dos capturas */}
             <div className={igStyles.inlineGallery}>
               <figure className={igStyles.fig}>
                 <img
@@ -138,39 +128,38 @@ export default function InitialGuide() {
         {openModal === "reports" && (
   <div>
     <h3 style={{ marginTop: 0 }}>Cómo leer los reportes</h3>
-    <ol style={{ margin: ".5rem 0 1rem 1.25rem", lineHeight: 1.6 }}>
-      <li>
-        Ve al <strong>correo</strong> del juego y abre la sección correspondiente:
-        <em> Regular</em> para <strong>zombies</strong> y <em>Batalla</em> para <strong>enemigos</strong>.
-      </li>
-      <li>
-        Entra en la pestaña <strong>“Estadísticas”</strong> y localiza el valor <strong>“MEA”</strong>.
-      </li>
-      <li>
-        El <strong>MEA</strong> son los <strong>soldados perdidos</strong> (no heridos). Esos son los que
-        debes <strong>entrenar de nuevo</strong> para recuperarlos. Los que van al <strong>hospital</strong> se <strong>curan</strong> y vuelven a tus filas.
-      </li>
-    </ol>
 
-    <div className={igStyles.inlineGallery}>
+    {/* ✅ Viñetas verdes usando tu KList */}
+    <KList
+      items={[
+        {
+          text:
+            "Ve al correo del juego y abre la sección correspondiente: Regular para zombies y Batalla para enemigos."
+        },
+        {
+          text:
+            "Entra en la pestaña “Estadísticas” y localiza el valor “MEA”."
+        },
+        {
+          text:
+            "El MEA son los soldados perdidos (no heridos). Esos son los que debes entrenar de nuevo para recuperarlos. Los que van al hospital se curan y vuelven a tus filas."
+        },
+      ]}
+    />
+
+    {/* Imágenes ilustrativas debajo */}
+    <div className={igStyles.inlineGallery} style={{ marginTop: ".6rem" }}>
       <figure className={igStyles.fig}>
         <img
           src={reports1}
           alt="Correo del juego: secciones Regular (zombies) y Batalla (enemigos)"
         />
-        <figcaption>
-          1. Entra al correo y elige la sección: <em>Regular</em> para zombies o <em>Batalla</em> para enemigos.
-        </figcaption>
       </figure>
-
       <figure className={igStyles.fig}>
         <img
           src={reports2}
           alt="Pestaña Estadísticas del reporte con el indicador MEA"
         />
-        <figcaption>
-          2. En <strong>Estadísticas</strong>, fíjate en <strong>MEA</strong>: son las bajas definitivas que debes entrenar.
-        </figcaption>
       </figure>
     </div>
   </div>
