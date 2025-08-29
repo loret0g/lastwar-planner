@@ -94,6 +94,7 @@
 }
 
 .moreBtn {
+  display: inline-block;          /* que se comporte igual en <a> y <button> */
   border: 1px solid #ff9800;
   background: linear-gradient(180deg, #ffa726, #ff9800);
   color: #fff;
@@ -102,8 +103,17 @@
   border-radius: 10px;
   cursor: pointer;
   box-shadow: 0 6px 14px rgba(255, 152, 0, .25);
+
+  /* normaliza <a> */
+  text-decoration: none;
+  color: #fff;
 }
 
 .moreBtn:hover {
   filter: brightness(1.03);
+  text-decoration: none; /* evita que vuelva el subrayado */
+}
+
+.moreBtn:visited {
+  color: #fff; /* evita que un <a> visitado se vuelva morado */
 }

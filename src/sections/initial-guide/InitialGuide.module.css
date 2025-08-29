@@ -1,0 +1,34 @@
+.inlineGallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: .9rem;
+  margin-top: .75rem;
+}
+
+@media (max-width: 640px) {
+  .inlineGallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+.fig {
+  background: #fff;
+  border: 1px solid #eaeaea;
+  border-radius: 12px;
+  padding: .6rem;
+  box-shadow: 0 6px 16px rgba(0,0,0,.06);
+}
+
+.fig img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.fig figcaption {
+  margin-top: .5rem;
+  font-size: .9rem;
+  color: #475569;
+  line-height: 1.35;
+}

@@ -5,13 +5,13 @@ export default function Sidebar({ isOpen, onClose }) {
   const classNames = `${styles.sidebar} ${isOpen ? styles.mobileOpen : ""}`;
 
   const items = [
-    { to: "/",                label: "Guía inicial", end: true },
-    { to: "/alliance-duel",   label: "Duelo de alianza" },
-    { to: "/daily-tasks",     label: "Tareas diarias" },
-    { to: "/events",          label: "Eventos de Alianza" },
+    { to: "initial-guide", label: "Guía inicial", end: true },
+    { to: "/alliance-duel", label: "Duelo de alianza" },
+    { to: "/events", label: "Eventos semanales" },
+    { to: "/season-1", label: "Temporada 1" },
     { to: "/hq-requirements", label: "Requisitos CG" },
-    { to: "/marshall",        label: "Marshall" },
-    { to: "/season-1",        label: "Temporada 1" },
+    { to: "/marshall", label: "Marshall" },
+    { to: "/daily-tasks", label: "Tareas diarias" },
   ];
 
   return (

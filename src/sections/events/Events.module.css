@@ -21,9 +21,9 @@
   border: 1px solid #ececec;
   border-radius: 12px;
   background: #fff;
-  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
 
-  /* para que los hijos puedan encoger y no rompan el contenedor */
+  /* que no rompa el ancho del main */
   min-width: 0;
   flex-wrap: wrap;
 }
@@ -41,7 +41,7 @@
   align-items: center;
   gap: .5rem;
   min-width: 0;
-  flex-wrap: wrap; /* permite saltar de línea si no cabe */
+  flex-wrap: wrap;
 }
 
 .tzControl {
@@ -51,7 +51,7 @@
   font-size: .9rem;
   color: #475569;
   min-width: 0;
-  flex: 1 1 220px; /* crece y puede ir a otra línea */
+  flex: 1 1 220px;
 }
 
 .tzSelect {
@@ -72,24 +72,25 @@
   border-radius: 8px;
 }
 
-/* En pantallas pequeñas, pone el título arriba y los controles debajo en bloque */
 @media (max-width: 640px) {
   .weekHeader {
     flex-direction: column;
     align-items: stretch;
     gap: .6rem;
   }
+
   .rightControls {
     justify-content: space-between;
   }
+
   .weekRange {
-    margin-left: auto; /* se pega a la derecha */
+    margin-left: auto;
   }
 }
 
-/* Calendario:
-   - Escritorio: 7 columnas exactas
-   - Móvil: 1 columna
+/* === Calendario ===
+   Desktop: 7 columnas
+   Móvil: 1 columna
 */
 .calendar {
   display: grid;
@@ -104,50 +105,71 @@
   }
 }
 
-/* Columna/día */
+/* Por si tu JSX aún usa .dayCol en vez de .dayCard */
 .dayCol {
+  margin: 0;
   display: grid;
   grid-template-rows: auto 1fr;
   gap: .5rem;
   min-width: 0;
-  margin: 0;
   padding: 0;
 }
 
-/* Cabecera del día */
+/* === Tarjeta del día (header + eventos juntos) === */
+.dayCard {
+  margin: 0;
+  /* evita herencias */
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: .5rem;
+  min-width: 0;
+
+  background: #f7f7f8;
+  /* gris claro unificado para TODOS los días */
+  border: 1px solid #ececec;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
+  padding: .6rem .7rem .7rem .7rem;
+}
+
+.todayCard {
+  outline: 3px solid rgba(255, 152, 0, .18);
+  box-shadow: 0 8px 20px rgba(255, 152, 0, .06);
+}
+
+/* Header del día dentro de la tarjeta */
 .dayHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: .5rem;
-  padding: .55rem .7rem;
-  border: 1px solid #ececec;
-  border-radius: 12px;
-  background: #fff;
-  box-shadow: 0 4px 12px rgba(0,0,0,.04);
+  padding: .2rem .2rem .4rem;
+  border-bottom: 1px dashed #e5e7eb;
 }
-.today {
-  outline: 3px solid rgba(255,152,0,.25);
-  box-shadow: 0 8px 18px rgba(255,152,0,.08);
+
+.dayName {
+  font-weight: 800;
+  color: #1f2937;
 }
-.dayName { font-weight: 800; color: #1f2937; }
+
 .dayDate {
   font-size: .9rem;
   color: #475569;
-  background: #f3f4f6;
+  background: #ffffff;
   border: 1px solid #e5e7eb;
   padding: .15rem .45rem;
   border-radius: 8px;
 }
 
-/* Lista de eventos de ese día */
+/* Lista de eventos del día */
 .eventList {
   list-style: none;
-  margin: 0;
+  margin: .4rem 0 0;
   padding: 0;
   display: grid;
   gap: .5rem;
 }
+
 .empty {
   display: flex;
   align-items: center;
@@ -167,38 +189,55 @@
   gap: .5rem .6rem;
   padding: .55rem .7rem;
   border-radius: 12px;
-  border: 1px solid #ececec;
+  border: 1px solid #eaeaea;
   background: #fff;
-  box-shadow: 0 6px 18px rgba(0,0,0,.06);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
   position: relative;
 }
 
-/* Franja de color a la izquierda (por tipo) */
+/* Franja de color por tipo (en cada evento) */
 .eventCard::before {
   content: "";
   position: absolute;
-  left: 0; top: 0; bottom: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
   width: 6px;
   border-radius: 12px 0 0 12px;
 }
 
-/* Tiempo y título */
+.eventCard.typeMarshall::before {
+  background: var(--typeMarshall);
+}
+
+.eventCard.typeSiege::before {
+  background: var(--typeSiege);
+}
+
+.eventCard.typeZombie::before {
+  background: var(--typeZombie);
+}
+
+.eventCard.typeDesertStorm::before {
+  background: var(--typeDesertStorm);
+}
+
+.eventCard.typeOther::before {
+  background: var(--typeOther);
+}
+
+/* Texto de cada evento */
 .eventTime {
   font-weight: 800;
   color: #0f172a;
   font-size: .95rem;
 }
+
 .eventTitle {
   color: #1f2937;
   font-weight: 600;
+  text-align: center;
 }
-
-/* Variantes por tipo (franja izquierda) */
-.eventCard.typeMarshall::before { background: var(--typeMarshall); }
-.eventCard.typeSiege::before { background: var(--typeSiege); }
-.eventCard.typeZombie::before { background: var(--typeZombie); }
-.eventCard.typeDesertStorm::before { background: var(--typeDesertStorm); }
-.eventCard.typeOther::before { background: var(--typeOther); }
 
 /* Leyenda */
 .legend {
@@ -210,16 +249,33 @@
   font-size: .9rem;
   margin-top: .25rem;
 }
+
 .dot {
   display: inline-block;
-  width: 14px; height: 14px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
   margin-right: .35rem;
   vertical-align: -2px;
   background: #cbd5e1;
 }
-.dot.typeZombie { background: var(--typeZombie); }
-.dot.typeSiege { background: var(--typeSiege); }
-.dot.typeMarshall { background: var(--typeMarshall); }
-.dot.typeDesertStorm { background: var(--typeDesertStorm); }
-.dot.typeOther { background: var(--typeOther); }
+
+.dot.typeZombie {
+  background: var(--typeZombie);
+}
+
+.dot.typeSiege {
+  background: var(--typeSiege);
+}
+
+.dot.typeMarshall {
+  background: var(--typeMarshall);
+}
+
+.dot.typeDesertStorm {
+  background: var(--typeDesertStorm);
+}
+
+.dot.typeOther {
+  background: var(--typeOther);
+}

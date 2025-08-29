@@ -1,9 +1,7 @@
-// src/components/Accordion/Accordion.jsx
 import { useEffect } from "react";
 import styles from "./Accordion.module.css";
 
 export function Accordion({ className = "", children }) {
-  // Abre automáticamente el <details> cuyo id coincide con el hash
   useEffect(() => {
     const openFromHash = () => {
       const id = decodeURIComponent(window.location.hash.replace(/^#/, ""));
@@ -22,8 +20,7 @@ export function Accordion({ className = "", children }) {
   return <div className={`${styles.accordion} ${className}`}>{children}</div>;
 }
 
-export function AccordionItem({ id, title, children, onMore }) {
-  // Cuando el usuario abre/cierra, sincroniza el hash
+export function AccordionItem({ id, title, children, onMore, actions }) {
   const onToggle = (e) => {
     const isOpen = e.currentTarget.open;
     if (isOpen) {
@@ -42,11 +39,17 @@ export function AccordionItem({ id, title, children, onMore }) {
 
       <div className={styles.panel}>
         {children}
-        {onMore && (
+
+        {(actions?.length || onMore) && (
           <div className={styles.moreRow}>
-            <button className={styles.moreBtn} onClick={onMore}>
-              Más detalles
-            </button>
+            {actions?.map((node, i) => (
+              <span key={i}>{node}</span>
+            ))}
+            {onMore && (
+              <button className={styles.moreBtn} onClick={onMore}>
+                Más detalles
+              </button>
+            )}
           </div>
         )}
       </div>

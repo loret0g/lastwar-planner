@@ -10,19 +10,25 @@ export const SECTIONS = [
         sub: ["Barraca nivel 24 – T8", "Barraca nivel 27 – T9", "Barraca nivel 30 – T10"]
       }
     ],
-    more: "hq-requirements"
+    ctas: [
+      { kind: "link", to: "/hq-requirements", label: "Ver requisitos" }
+    ]
   },
   {
     key: "first-squad",
-    title: "Prioridad al primer escuadrón",
+    title: "Héroes: Como subir de nivel",
     items: [
       { text: "Hay que tener el primer escuadrón fuerte, será con el que ataques y defiendas tu base." },
       { text: "Céntrate en mejorar el primer escuadrón, no es conveniente ir subiendo a todos los héroes." },
       { text: "Prioriza los héroes UR (dorados)." },
       { text: "Invierte armamento/chips de dron/fragmentos primero en ese equipo." },
       { text: "Poco a poco deberías tener un escuadrón de tipo tanque, otro aéreo y otro de misiles. (paciencia)" }
+    ],
+    ctas: [
+      { kind: "guide", guideKey: "heros", label: "Prioridad de héroes (guía)" }
     ]
   },
+
   {
     key: "placement",
     title: "Colocación de los héroes",
@@ -30,7 +36,9 @@ export const SECTIONS = [
       { text: "Héroes de defensa (símbolo de escudo) en los dos huecos de adelante." },
       { text: "Atrás, a cada lado, 2 de ataque (símbolo de explosión) y uno de apoyo (símbolo de +) en el medio." }
     ],
-    more: "placement"
+    ctas: [
+      { kind: "modal", modalKey: "placement", label: "Ver ejemplo" }
+    ]
   },
   {
     key: "same-type",
@@ -49,15 +57,17 @@ export const SECTIONS = [
     items: [
       { text: "Sube armamento adecuado al rol de tus héroes. Aporta muchísimo poder efectivo." },
       {
-        text: "Roles recomendados:", sub: [
-          "Héroes de ataque: Armamento de la izquierda",
-          "Héroes de defensa: Armamento de la derecha",
-          "Héroes de apoyo: Armamento de la izquierda"
+        text: "Armamento recomendado:", sub: [
+          "Héroes de ataque: Armamento de la izquierda (Cañón y Chip de datos)",
+          "Héroes de defensa: Armamento de la derecha (Armadura y Radar)",
+          "Héroes de apoyo: Armamento de la izquierda (Cañón y Chip de datos)"
         ]
       },
       { text: "Sube solo el armamento UR (dorado), el morado y azul olvídalos." }
     ],
-    more: "equipment"
+    ctas: [
+      { kind: "guide", guideKey: "equipment", label: "Más detalles" }
+    ]
   },
   {
     key: "wall",
@@ -66,7 +76,9 @@ export const SECTIONS = [
       { text: "No tengas las tropas en la muralla, ya que si te ataca alguien de más nivel tendrás muchas más pérdidas." },
       { text: "Actívalas únicamente si ves que te ataca un nivel inferior al tuyo y en el evento de Asedio Zombie." }
     ],
-    more: "wall"
+    ctas: [
+      { kind: "modal", modalKey: "wall", label: "Más detalles" }
+    ]
   },
   {
     key: "heal",
@@ -94,7 +106,9 @@ export const SECTIONS = [
     items: [
       { text: "Usa los bonus para acelerar construcción, investigación y entrenamiento." },
     ],
-    more: "roles"
+    ctas: [
+      { kind: "guide", guideKey: "roles", label: "Más detalles" }
+    ]
   },
   {
     key: "mines",
@@ -113,8 +127,11 @@ export const SECTIONS = [
       { text: "Averigua la cantidad de tropas que pierdes por ataque." },
       { text: "Después de atacar a un doom, un caminante o un enemigo deberías mirar el reporte en tu correo. Así podrás saber la cantidad de tropas que pierdes para ajustar el nivel del zombi y saber si compensan las pérdidas." },
     ],
-    more: "reports"
-  },
+    ctas: [
+      { kind: "modal", modalKey: "reports", label: "Cómo leer los reportes" }
+    ]
+  }
+  ,
   {
     key: "vip",
     title: "Pase VIP con diamantes",

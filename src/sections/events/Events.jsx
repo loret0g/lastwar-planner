@@ -199,30 +199,37 @@ export default function Events() {
       </div>
 
       <div className={styles.calendar} role="grid" aria-label="Semana de eventos">
-        {week.map((d) => (
-          <section key={d.name} className={styles.dayCol} role="gridcell">
-            <header className={`${styles.dayHeader} ${d.isToday ? styles.today : ""}`}>
-              <span className={styles.dayName}>{d.name}</span>
-              <span className={styles.dayDate}>{d.date}</span>
-            </header>
+        {week.map((d, i) => {
+          const accentClass = styles[`accent${i}`]; // 0=lunes, 6=domingo
+          return (
+            <section
+              key={d.name}
+              className={`${styles.dayCard} ${accentClass} ${d.isToday ? styles.todayCard : ""}`}
+              role="gridcell"
+            >
+              <header className={styles.dayHeader}>
+                <span className={styles.dayName}>{d.name}</span>
+                <span className={styles.dayDate}>{d.date}</span>
+              </header>
 
-            <ul className={styles.eventList}>
-              {eventsByDay[d.name].length === 0 ? (
-                <li className={styles.empty}>—</li>
-              ) : (
-                eventsByDay[d.name].map((ev, idx) => (
-                  <li
-                    key={`${ev.title}-${idx}`}
-                    className={`${styles.eventCard} ${styles[TYPE_CLASS[ev.type] || TYPE_CLASS.other]}`}
-                  >
-                    <div className={styles.eventTime}>{ev.time}</div>
-                    <div className={styles.eventTitle}>{ev.title}</div>
-                  </li>
-                ))
-              )}
-            </ul>
-          </section>
-        ))}
+              <ul className={styles.eventList}>
+                {eventsByDay[d.name].length === 0 ? (
+                  <li className={styles.empty}>—</li>
+                ) : (
+                  eventsByDay[d.name].map((ev, idx) => (
+                    <li
+                      key={`${ev.title}-${idx}`}
+                      className={`${styles.eventCard} ${styles[TYPE_CLASS[ev.type] || TYPE_CLASS.other]}`}
+                    >
+                      <div className={styles.eventTime}>{ev.time}</div>
+                      <div className={styles.eventTitle}>{ev.title}</div>
+                    </li>
+                  ))
+                )}
+              </ul>
+            </section>
+          );
+        })}
       </div>
 
       <div className={styles.legend} aria-hidden>
