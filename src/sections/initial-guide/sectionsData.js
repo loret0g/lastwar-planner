@@ -4,11 +4,12 @@ export const SECTIONS = [
     title: "Subir Cuartel general y Barracas",
     items: [
       { text: "El Cuartel General aumenta tu poder y permite a tus héroes conseguir un nivel más alto." },
-      { text: "Adelántate a los requisitos que piden para subir el siguiente nivel del cuartel general" },
+      { text: "Adelántate a los requisitos que piden para subir el siguiente nivel del cuartel general." },
       {
         text: "Las Barracas, dependiendo de su nivel, te permitirá crear soldados más fuertes.",
         sub: ["Barraca nivel 24 – T8", "Barraca nivel 27 – T9", "Barraca nivel 30 – T10"]
-      }
+      },
+      { text: "Mejora los campos de entrenamiento para poder albergar más tropas." }
     ],
     ctas: [
       { kind: "link", to: "/hq-requirements", label: "Ver requisitos" }
@@ -45,7 +46,7 @@ export const SECTIONS = [
     title: "Escuadrones del mismo tipo",
     items: [
       { text: "Es conveniente tener 3 escuadrones diferentes: tanque, aeronave, misil." },
-      { text: "Tener los 5 héroes del mismo tipo da un 20% de buff" },
+      { text: "Tener los 5 héroes del mismo tipo da un 20% de buff." },
       { text: "4 héroes del mismo tipo: 15%" },
       { text: "3 de un tipo y 2 de otro: 10%" },
       { text: "3 héroes del mismo tipo: 5%" }
@@ -63,7 +64,7 @@ export const SECTIONS = [
           "Héroes de apoyo: Armamento de la izquierda (Cañón y Chip de datos)"
         ]
       },
-      { text: "Sube solo el armamento UR (dorado), el morado y azul olvídalos." }
+      { text: "Sube solo el armamento UR (dorado). El morado y azul olvídalos." }
     ],
     ctas: [
       { kind: "guide", guideKey: "equipment", label: "Más detalles" }
@@ -137,7 +138,7 @@ export const SECTIONS = [
     items: [
       { text: "Ahorra 10.000 diamantes para el VIP mensual." },
       { text: "En base, botón VIP (arriba izquierda) → 30 días por 10.000. Renuévalo antes de que acabe: los días se suman." },
-      { text: "Da bonificaciones globales muy útiles (reducción de tiempo, más recursos, más daño...)" }
+      { text: "Da bonificaciones globales muy útiles (reducción de tiempo, más recursos, más daño...)." }
     ]
   },
   {

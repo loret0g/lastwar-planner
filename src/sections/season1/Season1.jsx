@@ -8,6 +8,14 @@ import french     from "../../assets/season1/season1-french.jpg";
 import english    from "../../assets/season1/season1-english.jpg";
 import ukrainian  from "../../assets/season1/season1-ukrainian.jpg";
 
+// imágenes (consejos y estrategias)
+import tipsSpanish    from "../../assets/season1/tips-spanish.jpg";
+import tipsItalian    from "../../assets/season1/tips-italian.jpg";
+import tipsFrench     from "../../assets/season1/tips-french.jpg";
+import tipsEnglish    from "../../assets/season1/tips-english.jpg";
+import tipsUkrainian  from "../../assets/season1/tips-ukrainian.jpg";
+import tipsPolish     from "../../assets/season1/tips-polish.jpg";
+
 // imágenes (novedades de héroes)
 import heroSpanish    from "../../assets/season1/hero-spanish.jpg";
 import heroItalian    from "../../assets/season1/hero-italian.jpg";
@@ -31,7 +39,17 @@ const SHEETS_GUIDE = [
   { key: "uk", label: "Українська",  img: ukrainian },
 ];
 
-// === BLOQUE 2: Novedades de héroes ===
+// === BLOQUE 2: Consejos y estrategias ===
+const SHEETS_TIPS = [
+  { key: "es", label: "Español",     img: tipsSpanish },
+  { key: "it", label: "Italiano",    img: tipsItalian },
+  { key: "fr", label: "Français",    img: tipsFrench  },
+  { key: "en", label: "English",     img: tipsEnglish },
+  { key: "uk", label: "Українська",  img: tipsUkrainian },
+  { key: "pl", label: "Polski",      img: tipsPolish },
+];
+
+// === BLOQUE 3: Novedades de héroes ===
 const SHEETS_HEROES = [
   { key: "es", label: "Español",     img: heroSpanish },
   { key: "it", label: "Italiano",    img: heroItalian },
@@ -66,7 +84,13 @@ export default function Season1() {
         <SheetsGrid sheets={SHEETS_GUIDE} onOpen={setOpen} />
       </section>
 
-      {/* Grupo 2: Novedades de héroes */}
+      {/* Grupo 2: Consejos y estrategias */}
+      <section className={styles.group}>
+        <h4 className={styles.groupTitle}>Consejos y estrategias</h4>
+        <SheetsGrid sheets={SHEETS_TIPS} onOpen={setOpen} />
+      </section>
+
+      {/* Grupo 3: Novedades de héroes */}
       <section className={styles.group}>
         <h4 className={styles.groupTitle}>Novedades de héroes</h4>
         <SheetsGrid sheets={SHEETS_HEROES} onOpen={setOpen} />
