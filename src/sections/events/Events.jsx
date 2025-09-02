@@ -1,7 +1,15 @@
 import { useMemo, useState, useEffect } from "react";
 import styles from "./Events.module.css";
 
-const DAYS = ["Lunes","Martes","Miércoles","Jueves","Viernes","Sábado","Domingo"];
+const DAYS = [
+  "Lunes",
+  "Martes",
+  "Miércoles",
+  "Jueves",
+  "Viernes",
+  "Sábado",
+  "Domingo",
+];
 
 // Tipos → clase CSS
 const TYPE_CLASS = {
@@ -19,7 +27,8 @@ const BASE_TZ = "Europe/Madrid"; // tus horas base (España)
  */
 const SERVER_TZ = "Etc/GMT+2";
 
-const autoTZ = Intl.DateTimeFormat().resolvedOptions().timeZone || "Europe/Madrid";
+const autoTZ =
+  Intl.DateTimeFormat().resolvedOptions().timeZone || "Europe/Madrid";
 
 const TIMEZONES = [
   { label: `Mi zona (auto) – ${autoTZ}`, value: autoTZ },
@@ -33,28 +42,39 @@ const TIMEZONES = [
 
 /** Datos base (horas en horario España) */
 const SAMPLE_EVENTS = [
-  // { day: "Lunes",     time: "21:00", title: "Marshall",                type: "marshall" },
-  // { day: "Martes",    time: "21:00", title: "Asedio zombie",           type: "siege"    },
-  { day: "Miércoles", time: "",      title: "Zombies dorados",         type: "zombie"   },
-  { day: "Jueves",    time: "",      title: "Zombies dorados",         type: "zombie"   },
-  { day: "Jueves",    time: "22:00", title: "Marshall",                type: "marshall" },
-  { day: "Viernes",   time: "",      title: "Zombies dorados",         type: "zombie"   },
-  { day: "Sábado",    time: "22:00", title: "Tormenta del desierto",   type: "desertStorm" },
-  { day: "Sábado",    time: "13:00", title: "Tormenta del desierto",   type: "desertStorm" },
+  { day: "Lunes", time: "21:00", title: "Marshall", type: "marshall" },
+  { day: "Martes", time: "22:00", title: "Asedio zombie", type: "siege" },
+  { day: "Miércoles", time: "22:00", title: "Marshall", type: "marshall" },
+  // { day: "Jueves",    time: "22:00", title: "Marshall",                type: "marshall" },
+  // { day: "Viernes",   time: "",      title: "Zombies dorados",         type: "zombie"   },
+  {
+    day: "Sábado",
+    time: "22:00",
+    title: "Tormenta del desierto",
+    type: "desertStorm",
+  },
+  {
+    day: "Sábado",
+    time: "13:00",
+    title: "Tormenta del desierto",
+    type: "desertStorm",
+  },
 ];
 
 // ----------------- utilidades fecha / tz -----------------
 function startOfWeek(d) {
   const js = new Date(d);
   const offset = (js.getDay() + 6) % 7; // JS Sunday=0 → lunes=0
-  js.setHours(0,0,0,0);
+  js.setHours(0, 0, 0, 0);
   js.setDate(js.getDate() - offset);
   return js;
 }
 function formatDM(d) {
   return d.toLocaleDateString("es-ES", { day: "2-digit", month: "2-digit" });
 }
-function pad2(n){ return String(n).padStart(2,"0"); }
+function pad2(n) {
+  return String(n).padStart(2, "0");
+}
 
 function parseTimeStr(s) {
   const t = (s || "").trim().toLowerCase();
@@ -63,34 +83,52 @@ function parseTimeStr(s) {
     return { kind: "allday" };
   const m = t.match(/^(\d{1,2}):(\d{2})(?:\s*-\s*(\d{1,2}):(\d{2}))?$/);
   if (!m) return { kind: "text", raw: s };
-  const h1 = +m[1], mi1 = +m[2];
-  const start = h1*60 + mi1;
+  const h1 = +m[1],
+    mi1 = +m[2];
+  const start = h1 * 60 + mi1;
   if (m[3] != null) {
-    const h2 = +m[3], mi2 = +m[4];
-    const end = h2*60 + mi2;
+    const h2 = +m[3],
+      mi2 = +m[4];
+    const end = h2 * 60 + mi2;
     return { kind: "range", start, end };
   }
   return { kind: "single", start };
 }
 function minutesToStr(min) {
-  const h = Math.floor(min/60), m = min%60;
+  const h = Math.floor(min / 60),
+    m = min % 60;
   return `${pad2(h)}:${pad2(m)}`;
 }
 function shiftMinutes(min, delta) {
   const total = min + delta;
   const dayShift = Math.floor(total / 1440); // puede ser negativo
-  let minutes = total % 1440; if (minutes < 0) minutes += 1440;
+  let minutes = total % 1440;
+  if (minutes < 0) minutes += 1440;
   return { minutes, dayShift };
 }
 // offset (minutos) de una zona en una fecha concreta
 function tzOffsetMinutes(timeZone, dateUTC) {
   const dtf = new Intl.DateTimeFormat("en-US", {
-    timeZone, hour12: false,
-    year: "numeric", month: "2-digit", day: "2-digit",
-    hour: "2-digit", minute: "2-digit", second: "2-digit"
+    timeZone,
+    hour12: false,
+    year: "numeric",
+    month: "2-digit",
+    day: "2-digit",
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
   });
-  const parts = Object.fromEntries(dtf.formatToParts(dateUTC).map(p => [p.type, p.value]));
-  const asUTC = Date.UTC(+parts.year, +parts.month-1, +parts.day, +parts.hour, +parts.minute, +parts.second);
+  const parts = Object.fromEntries(
+    dtf.formatToParts(dateUTC).map((p) => [p.type, p.value])
+  );
+  const asUTC = Date.UTC(
+    +parts.year,
+    +parts.month - 1,
+    +parts.day,
+    +parts.hour,
+    +parts.minute,
+    +parts.second
+  );
   return (asUTC - dateUTC.getTime()) / 60000;
 }
 // delta minutos entre BASE_TZ y tz para ese día de la semana
@@ -98,8 +136,10 @@ function deltaForDay(dayIdx, mondayDate, tz) {
   const base = new Date(mondayDate);
   base.setDate(mondayDate.getDate() + dayIdx);
   // ancla a 12:00 UTC para evitar raros en cambios de hora
-  const anchorUTC = new Date(Date.UTC(base.getFullYear(), base.getMonth(), base.getDate(), 12, 0, 0));
-  const offBase   = tzOffsetMinutes(BASE_TZ, anchorUTC);
+  const anchorUTC = new Date(
+    Date.UTC(base.getFullYear(), base.getMonth(), base.getDate(), 12, 0, 0)
+  );
+  const offBase = tzOffsetMinutes(BASE_TZ, anchorUTC);
   const offTarget = tzOffsetMinutes(tz, anchorUTC);
   return offTarget - offBase; // minutos a sumar a la hora base
 }
@@ -107,9 +147,11 @@ function deltaForDay(dayIdx, mondayDate, tz) {
 export default function Events() {
   // recuerda la elección del usuario
   const [tz, setTz] = useState(() => localStorage.getItem("tz") || autoTZ);
-  useEffect(() => { localStorage.setItem("tz", tz); }, [tz]);
+  useEffect(() => {
+    localStorage.setItem("tz", tz);
+  }, [tz]);
 
-  const today  = useMemo(() => new Date(), []);
+  const today = useMemo(() => new Date(), []);
   const monday = useMemo(() => startOfWeek(today), [today]);
 
   const week = useMemo(() => {
@@ -129,7 +171,7 @@ export default function Events() {
 
   const rangeLabel = useMemo(() => {
     const first = week[0]?.dateObj ?? monday;
-    const last  = week[6]?.dateObj ?? monday;
+    const last = week[6]?.dateObj ?? monday;
     const fmt = (d) =>
       d.toLocaleDateString("es-ES", { day: "2-digit", month: "short" });
     return `${fmt(first)} — ${fmt(last)}`;
@@ -137,7 +179,7 @@ export default function Events() {
 
   // === Agrupa eventos convertidos a la zona elegida ===
   const eventsByDay = useMemo(() => {
-    const map = Object.fromEntries(DAYS.map(d => [d, []]));
+    const map = Object.fromEntries(DAYS.map((d) => [d, []]));
 
     for (const ev of SAMPLE_EVENTS) {
       const srcIdx = DAYS.indexOf(ev.day);
@@ -145,7 +187,11 @@ export default function Events() {
 
       const parsed = parseTimeStr(ev.time || "");
       // Sin hora (o "todo el día"): no convertimos
-      if (parsed.kind === "none" || parsed.kind === "allday" || parsed.kind === "text") {
+      if (
+        parsed.kind === "none" ||
+        parsed.kind === "allday" ||
+        parsed.kind === "text"
+      ) {
         map[ev.day].push({ ...ev });
         continue;
       }
@@ -160,7 +206,7 @@ export default function Events() {
         timeStr = minutesToStr(s.minutes);
       } else {
         const s = shiftMinutes(parsed.start, delta);
-        const e = shiftMinutes(parsed.end,   delta);
+        const e = shiftMinutes(parsed.end, delta);
         destIdx = (srcIdx + s.dayShift + 7) % 7; // día según el inicio
         timeStr = `${minutesToStr(s.minutes)}-${minutesToStr(e.minutes)}`;
       }
@@ -170,7 +216,9 @@ export default function Events() {
 
     // ordenar por hora
     for (const d of DAYS) {
-      map[d].sort((a, b) => (a.time || "").slice(0,5).localeCompare((b.time || "").slice(0,5)));
+      map[d].sort((a, b) =>
+        (a.time || "").slice(0, 5).localeCompare((b.time || "").slice(0, 5))
+      );
     }
     return map;
   }, [monday, tz]);
@@ -188,7 +236,9 @@ export default function Events() {
               onChange={(e) => setTz(e.target.value)}
             >
               {TIMEZONES.map((z) => (
-                <option key={z.value} value={z.value}>{z.label}</option>
+                <option key={z.value} value={z.value}>
+                  {z.label}
+                </option>
               ))}
             </select>
           </label>
@@ -198,13 +248,19 @@ export default function Events() {
         </div>
       </div>
 
-      <div className={styles.calendar} role="grid" aria-label="Semana de eventos">
+      <div
+        className={styles.calendar}
+        role="grid"
+        aria-label="Semana de eventos"
+      >
         {week.map((d, i) => {
           const accentClass = styles[`accent${i}`]; // 0=lunes, 6=domingo
           return (
             <section
               key={d.name}
-              className={`${styles.dayCard} ${accentClass} ${d.isToday ? styles.todayCard : ""}`}
+              className={`${styles.dayCard} ${accentClass} ${
+                d.isToday ? styles.todayCard : ""
+              }`}
               role="gridcell"
             >
               <header className={styles.dayHeader}>
@@ -219,7 +275,9 @@ export default function Events() {
                   eventsByDay[d.name].map((ev, idx) => (
                     <li
                       key={`${ev.title}-${idx}`}
-                      className={`${styles.eventCard} ${styles[TYPE_CLASS[ev.type] || TYPE_CLASS.other]}`}
+                      className={`${styles.eventCard} ${
+                        styles[TYPE_CLASS[ev.type] || TYPE_CLASS.other]
+                      }`}
                     >
                       <div className={styles.eventTime}>{ev.time}</div>
                       <div className={styles.eventTitle}>{ev.title}</div>
@@ -233,10 +291,12 @@ export default function Events() {
       </div>
 
       <div className={styles.legend} aria-hidden>
-        <span className={`${styles.dot} ${styles.typeMarshall}`}/> Marshall
-        <span className={`${styles.dot} ${styles.typeSiege}`}/> Asedio
-        <span className={`${styles.dot} ${styles.typeZombie}`}/> Zombies dorados
-        <span className={`${styles.dot} ${styles.typeDesertStorm}`}/> Tormenta del desierto
+        <span className={`${styles.dot} ${styles.typeMarshall}`} /> Marshall
+        <span className={`${styles.dot} ${styles.typeSiege}`} /> Asedio
+        <span className={`${styles.dot} ${styles.typeZombie}`} /> Zombies
+        dorados
+        <span className={`${styles.dot} ${styles.typeDesertStorm}`} /> Tormenta
+        del desierto
         {/* <span className={`${styles.dot} ${styles.typeOther}`}/> Otros */}
       </div>
     </div>
