@@ -9,7 +9,8 @@ export const ALLIANCE_DUEL_TASKS = {
       { text: 'Subir el nivel del dron (datos y piezas)', tooltipKey: 'droneData' },
       { text: 'Abrir cofres de chip (no de componentes)', tooltipKey: 'dronChip' },
       { text: 'Gastar energía', tooltipKey: null },
-      { text: 'Recolectar recursos (las tropas en las minas, todo el día)', tooltipKey: null }
+      { text: 'Recolectar recursos (las tropas en las minas, todo el día)', tooltipKey: null },
+      { text: 'Guarda la tarea UR con estrella para el martes', tooltipKey: 'shinyTaskStar' }
     ],
     dont: [
       'No abrir regalos de las construcciones (dejamos para el martes)',
@@ -44,7 +45,8 @@ export const ALLIANCE_DUEL_TASKS = {
       { text: 'Realizar las tareas de radar (cada 6 horas)', tooltipKey: null },
       { text: 'Investigar donde se utilicen "medallas de honor"', tooltipKey: 'honorMedals' },
       { text: 'Utilizar aceleradores de investigación', tooltipKey: null },
-      { text: 'Abrir cofres de componentes de dron y juntarlos', tooltipKey: null }
+      { text: 'Abrir cofres de componentes de dron y juntarlos', tooltipKey: null },
+      { text: 'Guarda la tarea UR con estrella para el sábado', tooltipKey: 'shinyTaskStar' },
     ],
     dont: [
       'No abrir regalos de las construcciones',
@@ -61,7 +63,8 @@ export const ALLIANCE_DUEL_TASKS = {
       { text: 'Usar tickets de reclutamiento de héroes', tooltipKey: null },
       { text: 'Gastar toda la EXP de héroe (abrir los cofres de EXP que se encuentran en el inventario)', tooltipKey: null },
       { text: 'Usar fragmentos de héroe', tooltipKey: null },
-      { text: 'Utilizar medallas en “Habilidades de héroe”', tooltipKey: 'skillMedals' }
+      { text: 'Utilizar medallas en “Habilidades de héroe”', tooltipKey: 'skillMedals' },
+      { text: 'Guarda la tarea UR con estrella para el sábado', tooltipKey: 'shinyTaskStar' },
     ],
     dont: [
       'No realizar tareas de radar, se guardan para mañana',
@@ -78,6 +81,7 @@ export const ALLIANCE_DUEL_TASKS = {
       { text: 'Realizar las tareas de radar (cada 6 horas)', tooltipKey: null },
       { text: 'Utilizar el puesto de "Secretario de Seguridad" para entrenar/promover tropas', tooltipKey: null },
       { text: 'Usar aceleradores de entrenamiento', tooltipKey: null },
+      { text: 'Guarda la tarea UR con estrella para el sábado', tooltipKey: 'shinyTaskStar' },
 
       { text: 'Si vamos perdiendo y es decisivo:', type: 'section' },
       { text: 'Utilizar aceleradores de construcción o abrir algún regalo', tooltipKey: null },
@@ -85,7 +89,7 @@ export const ALLIANCE_DUEL_TASKS = {
 
       { text: 'Antes del reinicio del servidor:', type: 'section' },
       { text: 'Poner escudo para que esté activo a la hora del reinicio del servidor (04:00 en España) y que dure hasta la batalla de la capital si compites, sino hasta el siguiente reinicio (a las 04:00 del domingo en España)', tooltipKey: null },
-      { text: 'No dejes las tropas recolectando por la noche, serán atacadas', tooltipKey: null }
+      { text: 'No dejes las tropas recolectando por la noche, serán atacadas', tooltipKey: null },
     ],
     dont: [
       'No abrir cofres de dron (ni de componentes, ni de chips)',
@@ -123,6 +127,7 @@ export const ALLIANCE_DUEL_TASKS = {
       { text: 'Guardar tareas de radar', tooltipKey: 'radar' },
       { text: 'Poner tropas a recolectar (que terminen después del reinicio del servidor para puntuar el lunes)', tooltipKey: 'gather' },
       { text: 'Comprar recursos (sin gastar dinero real)', tooltipKey: 'buyResources' },
+      { text: 'Guarda la tarea UR con estrella para el martes', tooltipKey: 'shinyTaskStar' },
       { text: 'Tomar un Martini', tooltipKey: null }
     ],
     dont: [

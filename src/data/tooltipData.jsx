@@ -10,6 +10,7 @@ import gather from "../assets/tooltip/resources.png";
 import droneDataImg from "../assets/tooltip/drone.png";
 import skillMedalsImg from "../assets/tooltip/skill-medals.png";
 import honorMedalsImg from "../assets/tooltip/honor-medals.png";
+import shinyTaskStarImg from "../assets/tooltip/shiny-task-star.png";
 
 export const tooltipData = {
   radar: {
@@ -66,6 +67,16 @@ export const tooltipData = {
     brief: (
       <>
         <img src={honorMedalsImg} alt="Medallas de honor" />
+      </>
+    ),
+  },
+
+  shinyTaskStar: {
+    icon: <img src={infoIcon} alt="Info" />,
+    brief: (
+      <>
+        <p>A pesar de que actualices, la tarea con estrella no se quitará.</p>
+        <img src={shinyTaskStarImg} alt="Tarea brillante con estrella" />
       </>
     ),
   },
