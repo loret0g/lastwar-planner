@@ -42,9 +42,8 @@ const TIMEZONES = [
 
 /** Datos base (horas en horario España) */
 const SAMPLE_EVENTS = [
-  // { day: "Lunes", time: "16:00", title: "Marshall", type: "marshall" },
   { day: "Lunes", time: "16:00", title: "Asedio zombie", type: "siege" },
-  // { day: "Martes", time: "22:00", title: "Asedio zombie", type: "siege" },
+  { day: "Martes", time: "22:00", title: "Marshall", type: "marshall" },
   // { day: "Miércoles", time: "22:00", title: "Marshall", type: "marshall" },
   // { day: "Jueves",    time: "22:00", title: "Marshall",                type: "marshall" },
   // { day: "Viernes",   time: "",      title: "Zombies dorados",         type: "zombie"   },
