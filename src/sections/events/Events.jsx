@@ -46,7 +46,9 @@ const SAMPLE_EVENTS = [
   { day: "Martes", time: "22:00", title: "Marshall", type: "marshall" },
   // { day: "Miércoles", time: "22:00", title: "Marshall", type: "marshall" },
   // { day: "Jueves",    time: "22:00", title: "Marshall",                type: "marshall" },
-  // { day: "Viernes",   time: "",      title: "Zombies dorados",         type: "zombie"   },
+  { day: "Miércoles",   time: "",      title: "Zombies dorados",         type: "zombie"   },
+  { day: "Jueves",   time: "",      title: "Zombies dorados",         type: "zombie"   },
+  { day: "Viernes",   time: "",      title: "Zombies dorados",         type: "zombie"   },
   {
     day: "Sábado",
     time: "22:00",
