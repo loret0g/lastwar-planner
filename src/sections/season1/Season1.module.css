@@ -484,3 +484,93 @@
   color: #556;
   font-size: .95rem;
 }
+
+/* ——— Semana: tarjetas y layout ——— */
+.weekCard {
+  border: 1px solid #ececec;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(0,0,0,.05);
+  padding: 1rem;
+  display: grid;
+  gap: .8rem;
+  margin-top: 1rem;
+}
+
+.weekHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: .6rem;
+}
+
+.weekTitle {
+  margin: 0;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+/* ——— Chips / etiquetas ——— */
+.kpill {
+  border-radius: 999px;
+  padding: .2rem .6rem;
+  font-size: .8rem;
+  font-weight: 800;
+  letter-spacing: .2px;
+}
+.kpillInfo {
+  background: #eef2ff;
+  color: #3730a3;
+  border: 1px solid #c7d2fe;
+}
+.kpillWarn {
+  background: #fff7ed;
+  color: #9a3412;
+  border: 1px solid #fed7aa;
+}
+
+/* ——— Datos clave (grid) ——— */
+.kgridStats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: .6rem;
+}
+@media (max-width: 880px) {
+  .kgridStats { grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 520px) {
+  .kgridStats { grid-template-columns: 1fr; }
+}
+.kstat {
+  background: #fff;
+  border: 1px solid #eef0f3;
+  border-radius: 12px;
+  padding: .6rem .7rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,.04);
+}
+.kstatLabel {
+  font-size: .78rem;
+  color: #64748b;
+  margin-bottom: .15rem;
+}
+.kstatValue {
+  font-weight: 800;
+  color: #111827;
+}
+
+/* ——— Notas ——— */
+.knote {
+  border-radius: 10px;
+  padding: .6rem .7rem;
+  font-size: .92rem;
+}
+
+.knoteWarn {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+  color: #9f1239;
+}
+
+/* Ajustes menores */
+.par { margin: 0 0 .4rem; }
